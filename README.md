@@ -48,7 +48,7 @@ Requisitos:
   [SonarCloud](https://sonarcloud.io/project/configuration?id=isdi-coders-2023_DenverDebuggers-202309-mad)
 
 - Mínimo de un approvals para poder mergear PR
-- Desplegada a Netlify / Vercel
+- Desplegada a Netlify / Vercel.
 
 - HTML semántico (validado)
 - CSS con module-css (validado)
