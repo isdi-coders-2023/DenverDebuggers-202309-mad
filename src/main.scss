@@ -1,10 +1,10 @@
+@import './vars.scss';
+
 * {
   box-sizing: border-box;
 }
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
-  background-color: bisque;
+  background-color: $body-background-color;
 }
