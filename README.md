@@ -38,6 +38,12 @@ Requisitos:
 
 - Hooks de git (huskies) y GitHub Actions
 - SonarCloud, mínimo de un escaneo diario
+
+  Links:
+  FIGMA: https://www.figma.com/file/IlBCxyjLA692vb42XsHJ19/The-Simpsons-API---Denver-Buggers?type=design&node-id=0-1&mode=design&t=iRlKYAzaC1rwYxsU-0
+  TRELLO: https://trello.com/b/8ZaMxQMZ/denver-buggers
+  RESPONSABILIDAD DE COMPONENTES: https://docs.google.com/document/d/11s7PmUKd-nojjCcrv-e1q_FXnLKn0EGl4f76_ZqmSuc/edit
+  API THE SIMPSONS: https://simpsonsapi.000webhostapp.com/
 - Mínimo de un approvals para poder mergear PR
 - Desplegada a Netlify / Vercel
 
