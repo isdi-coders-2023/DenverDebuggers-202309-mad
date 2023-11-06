@@ -1,13 +1,13 @@
 import { screen, render } from '@testing-library/react';
 import '@testing-library/jest-dom';
 
-import { Footer } from './footer';
+import { App } from './app';
 
-describe('Given Footer component', () => {
+describe('Given App component', () => {
   describe('When we instantiate', () => {
     const p = 'Powered by: The Simpsons API';
     beforeEach(() => {
-      render(<Footer></Footer>);
+      render(<App></App>);
     });
     test('It should be in the document', () => {
       const element = screen.getByRole('contentinfo');
