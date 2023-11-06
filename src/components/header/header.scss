@@ -1,0 +1,41 @@
+@import '../../vars.scss';
+header {
+  background-color: $header-background-color;
+  h1 {
+    position: absolute;
+    left: 10000000px;
+  }
+  .header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-inline: 2rem;
+    padding-block: 1rem;
+  }
+  .header-buttons-container {
+    display: none;
+  }
+}
+@media (width > 380px) {
+  header {
+    .header-container {
+      justify-content: space-between;
+      gap: 4rem;
+    }
+    .hamburguer-logo {
+      display: none;
+    }
+    .header-buttons-container {
+      display: flex;
+      gap: 2rem;
+      button {
+        padding: 0.8rem 1.6rem;
+        background-color: $button-color;
+        border: none;
+        border-radius: 0.6rem;
+        color: white;
+        cursor: pointer;
+      }
+    }
+  }
+}
