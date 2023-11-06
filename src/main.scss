@@ -1,8 +1,10 @@
+@import './vars.scss';
+
 * {
   box-sizing: border-box;
 }
 
 body {
   margin: 0;
-  background-color: bisque;
+  background-color: $body-background-color;
 }

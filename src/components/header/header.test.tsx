@@ -1,20 +1,20 @@
 import { screen, render } from '@testing-library/react';
 import '@testing-library/jest-dom';
 
-import { App } from './app';
+import { Header } from './header';
 
-describe('Given App component', () => {
+describe('Given Header component', () => {
   describe('When we instantiate', () => {
-    const p = 'Powered by: The Simpsons API';
+    const h1 = 'The Simpsons API Challenge';
     beforeEach(() => {
-      render(<App></App>);
+      render(<Header></Header>);
     });
     test('It should be in the document', () => {
       const element = screen.getByRole('heading');
       expect(element).toBeInTheDocument();
     });
     test('Then it should render the title', () => {
-      const element = screen.getByText(p);
+      const element = screen.getByText(h1);
       expect(element).toBeInTheDocument();
     });
   });
