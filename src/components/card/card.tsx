@@ -1,4 +1,3 @@
-import './card.scss';
 import { Character } from '../../models/character';
 
 type Props = {
