@@ -1,22 +1,34 @@
-import { screen, render } from '@testing-library/react';
-import '@testing-library/jest-dom';
+import { render, screen } from '@testing-library/react';
+import { AppContext, ContextStructure } from '../../context/app.context';
 import { List } from './list';
-import { AppContextProvider } from '../../context/app.context.provider';
+import '@testing-library/jest-dom';
+import { Character } from '../../models/character';
 
-jest.mock('../card/card');
+const mockContext: ContextStructure = {
+  characterTools: {
+    characters: [{ Nombre: 'Bart' }] as Character[],
+    loadCharacters: jest
+      .fn()
+      .mockResolvedValue([{ Nombre: 'Bart' } as Character]),
+  },
+} as unknown as ContextStructure;
 
 describe('Given List component', () => {
   describe('When we instantiate', () => {
     beforeEach(() => {
       render(
-        <AppContextProvider>
+        <AppContext.Provider value={mockContext}>
           <List></List>
-        </AppContextProvider>
+        </AppContext.Provider>
       );
     });
-
-    test('Then it should be in the document', () => {
+    test('renders List with Card', () => {
       const element = screen.getByRole('list');
+      expect(element).toBeInTheDocument();
+    });
+    test('', () => {
+      expect(mockContext.characterTools.loadCharacters).toHaveBeenCalled();
+      const element = screen.getByText('Bart');
       expect(element).toBeInTheDocument();
     });
   });
