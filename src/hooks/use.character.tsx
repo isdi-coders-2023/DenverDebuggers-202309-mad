@@ -1,9 +1,10 @@
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useMemo, useReducer, useState } from 'react';
 import { ApiSimpsons } from '../services/api.repo';
-import { Character } from '../models/character';
+import { characterReducer } from '../reducer/reducer';
+import { loadActionCreator } from '../reducer/actions';
 
 export function useCharacters() {
-  const [characters, setCharacters] = useState<Character[]>([]);
+  const [characters, dispatch] = useReducer(characterReducer, []);
   const [page, setPage] = useState(1);
   const repo = useMemo(() => new ApiSimpsons(page), [page]);
 
@@ -14,7 +15,7 @@ export function useCharacters() {
       const loadedCharacters = loadedRepo.docs;
 
       // Síncrono
-      setCharacters(loadedCharacters);
+      dispatch(loadActionCreator(loadedCharacters));
     } catch (error) {}
   }, [repo]);
 
