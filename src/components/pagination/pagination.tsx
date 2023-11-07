@@ -1,24 +1,14 @@
 import { AppContext } from '../../context/app.context';
-import { SyntheticEvent, useContext, useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 
 export function Pagination() {
   const {
-    characterTools: { page, setPage },
+    characterTools: { page, handleNext, handlePrevious },
   } = useContext(AppContext);
 
   useEffect(() => {
     console.log(page);
   }, [page]);
-
-  const handleNext = (event: SyntheticEvent) => {
-    event.preventDefault();
-    setPage(page + 1);
-  };
-
-  const handlePrevious = (event: SyntheticEvent) => {
-    event.preventDefault();
-    setPage(page - 1);
-  };
 
   return (
     <>

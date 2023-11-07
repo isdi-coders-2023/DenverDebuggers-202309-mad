@@ -10,5 +10,10 @@ export function List() {
     loadCharacters();
   }, [loadCharacters]);
 
-  return <>{console.log(characters)}</>;
+  return (
+    <>
+      {console.log(characters)}
+      <h2>Los Simpsons</h2>
+    </>
+  );
 }

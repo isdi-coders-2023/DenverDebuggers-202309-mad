@@ -1,4 +1,10 @@
-import { useCallback, useMemo, useReducer, useState } from 'react';
+import {
+  SyntheticEvent,
+  useCallback,
+  useMemo,
+  useReducer,
+  useState,
+} from 'react';
 import { ApiSimpsons } from '../services/api.repo';
 import { characterReducer } from '../reducer/reducer';
 import { loadActionCreator } from '../reducer/actions';
@@ -19,10 +25,22 @@ export function useCharacters() {
     } catch (error) {}
   }, [repo]);
 
+  const handleNext = (event: SyntheticEvent) => {
+    event.preventDefault();
+    setPage(page + 1);
+  };
+
+  const handlePrevious = (event: SyntheticEvent) => {
+    event.preventDefault();
+    setPage(page - 1);
+  };
+
   return {
     characters,
     loadCharacters,
     page,
     setPage,
+    handleNext,
+    handlePrevious,
   };
 }
