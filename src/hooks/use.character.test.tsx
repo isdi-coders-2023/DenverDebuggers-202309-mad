@@ -9,8 +9,6 @@ describe('Given the useTask hook', () => {
   ApiSimpsons.prototype.getAll = jest
     .fn()
     .mockResolvedValue([{ id: 34 } as unknown as Character]);
-  // ApiRepo.prototype.updateTask = jest.fn();
-  // ApiRepo.prototype.deleteTask = jest.fn();
 
   describe('When we run the hook inside a component', () => {
     beforeEach(async () => {

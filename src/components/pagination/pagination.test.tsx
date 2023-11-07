@@ -12,8 +12,8 @@ describe('Given Footer component', () => {
         handlePrevious: jest.fn(),
       },
     } as unknown as ContextStructure;
-    beforeEach(async () => {
-      await render(
+    beforeEach(() => {
+      render(
         <AppContext.Provider value={value}>
           <Pagination></Pagination>
         </AppContext.Provider>
