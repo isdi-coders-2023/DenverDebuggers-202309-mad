@@ -15,9 +15,7 @@ export function useCharacters() {
 
       // Síncrono
       setCharacters(loadedCharacters);
-    } catch (error) {
-      console.log((error as Error).message);
-    }
+    } catch (error) {}
   }, [repo]);
 
   return {
