@@ -9,7 +9,7 @@ export function Card({ character }: Props) {
   return (
     <li className="character-card">
       <div className="card-container">
-        <p>{character.Imagen}</p>
+        <img src={character.Imagen} alt={`imagen de ${character.Nombre}`} />
         <div className="button-container">
           <button className="card-button">{character.Nombre}</button>
         </div>
