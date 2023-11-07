@@ -1,6 +1,4 @@
-
-type Estado = 'Vivo' | 'Fallecido' | 'Ficticio';
-
+type Status = 'Vivo' | 'Fallecido' | 'Ficticio';
 
 export type Character = {
   _id: string;
@@ -8,6 +6,19 @@ export type Character = {
   Historia: string;
   Imagen: string;
   Genero: string;
-  Estado: Estado;
+  Estado: Status;
   Ocupacion: string;
+};
+
+export type Repo = {
+  docs: Character[];
+  totalDocs: number;
+  limit: number;
+  totalPages: number;
+  page: number;
+  pagingCounter: number;
+  hasPrevPage: boolean;
+  hasNextPage: boolean;
+  prevPage: number | null;
+  nextPage: number;
 };
