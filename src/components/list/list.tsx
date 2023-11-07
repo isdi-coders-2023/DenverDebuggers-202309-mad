@@ -12,12 +12,10 @@ export function List() {
   }, [loadCharacters]);
 
   return (
-    <>
-      <ul className="character-list">
-        {characters.map((item) => (
-          <Card key={item._id} character={item}></Card>
-        ))}
-      </ul>
-    </>
+    <ul className="character-list">
+      {characters.map((item) => (
+        <Card key={item._id} character={item}></Card>
+      ))}
+    </ul>
   );
 }
