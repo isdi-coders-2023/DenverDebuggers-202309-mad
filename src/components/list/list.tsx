@@ -4,7 +4,7 @@ import { Card } from '../card/card';
 
 export function List() {
   const {
-    characterTools: { characters, loadCharacters },
+    characterTools: { state, loadCharacters },
   } = useContext(AppContext);
 
   useEffect(() => {
@@ -13,7 +13,7 @@ export function List() {
 
   return (
     <ul className="character-list">
-      {characters.map((item) => (
+      {state.characters.map((item) => (
         <Card key={item._id} character={item}></Card>
       ))}
     </ul>
