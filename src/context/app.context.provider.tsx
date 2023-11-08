@@ -7,8 +7,6 @@ type Props = {
 
 export function AppContextProvider({ children }: Props) {
   const charactersState = useCharacters();
-  const context: ContextStructure = {
-    characterTools: charactersState,
-  };
+  const context: ContextStructure = charactersState;
   return <AppContext.Provider value={context}>{children}</AppContext.Provider>;
 }

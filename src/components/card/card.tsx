@@ -1,5 +1,6 @@
+import { Link } from 'react-router-dom';
 import { Character } from '../../models/character';
-
+import './card.scss';
 type Props = {
   character: Character;
 };
@@ -7,12 +8,16 @@ type Props = {
 export function Card({ character }: Props) {
   return (
     <li className="character-card">
-      <div className="card-container">
-        <img src={character.Imagen} alt={`imagen de ${character.Nombre}`} />
-        <div className="button-container">
-          <button className="card-button">{character.Nombre}</button>
+      <Link to={'/details/' + character._id} style={{ textDecoration: 'none' }}>
+        <div className="card-container">
+          <div className="image-container">
+            <img src={character.Imagen} alt={`imagen de ${character.Nombre}`} />
+          </div>
+          <div className="button-card-container">
+            <p>{character.Nombre}</p>
+          </div>
         </div>
-      </div>
+      </Link>
     </li>
   );
 }

@@ -1,0 +1,17 @@
+@import '../../vars.scss';
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  padding-block-end: 1rem;
+  padding-inline: 1rem;
+
+  button {
+    padding: 0.8rem 1.6rem;
+    background-color: $button-color;
+    border: none;
+    border-radius: 0.6rem;
+    color: white;
+    cursor: pointer;
+  }
+}

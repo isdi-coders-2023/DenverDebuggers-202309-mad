@@ -1,0 +1,32 @@
+@import '../../vars.scss';
+li {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  font-family: $kavoon-font;
+  .card-container {
+    img {
+      max-height: 210px;
+      max-width: 160px;
+      object-fit: cover;
+      text-align: center;
+    }
+    .image-container {
+      text-align: center;
+      height: 210px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+    }
+    .button-card-container {
+      display: flex;
+      justify-content: center;
+
+      p {
+        text-align: center;
+        color: black;
+      }
+    }
+  }
+}
