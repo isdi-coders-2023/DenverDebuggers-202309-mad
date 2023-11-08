@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { AppContext, ContextStructure } from '../../context/app.context';
-import { List } from './list';
+import { Details } from './details';
 import '@testing-library/jest-dom';
 import { Character } from '../../models/character';
 import { State } from '../../reducer/actions';
@@ -21,18 +21,13 @@ describe('Given List component', () => {
       render(
         <BrowserRouter>
           <AppContext.Provider value={mockContext}>
-            <List></List>
+            <Details></Details>
           </AppContext.Provider>
         </BrowserRouter>
       );
     });
     test('renders List with Card', () => {
-      const element = screen.getByRole('list');
-      expect(element).toBeInTheDocument();
-    });
-    test('', () => {
-      expect(mockContext.loadCharacters).toHaveBeenCalled();
-      const element = screen.getByText('Bart');
+      const element = screen.getByRole('heading');
       expect(element).toBeInTheDocument();
     });
   });
