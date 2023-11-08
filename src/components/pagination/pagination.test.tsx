@@ -8,14 +8,12 @@ import { State } from '../../reducer/actions';
 describe('Given Footer component', () => {
   describe('When we instantiate', () => {
     const value: ContextStructure = {
-      characterTools: {
-        state: {
-          characters: [{ Nombre: 'Bart' }],
-          page: 1,
-        } as State,
-        handleNext: jest.fn(),
-        handlePrevious: jest.fn(),
-      },
+      state: {
+        characters: [{ Nombre: 'Bart' }],
+        page: 1,
+      } as State,
+      handleNext: jest.fn(),
+      handlePrevious: jest.fn(),
     } as unknown as ContextStructure;
     beforeEach(() => {
       render(
@@ -33,13 +31,13 @@ describe('Given Footer component', () => {
       const element = screen.getAllByRole('button')[0];
       expect(element).toBeInTheDocument();
       await userEvent.click(element);
-      expect(value.characterTools.handlePrevious).toHaveBeenCalled();
+      expect(value.handlePrevious).toHaveBeenCalled();
     });
     test('It should call handleNext', async () => {
       const element = screen.getAllByRole('button')[1];
       expect(element).toBeInTheDocument();
       await userEvent.click(element);
-      expect(value.characterTools.handleNext).toHaveBeenCalled();
+      expect(value.handleNext).toHaveBeenCalled();
     });
   });
 });
