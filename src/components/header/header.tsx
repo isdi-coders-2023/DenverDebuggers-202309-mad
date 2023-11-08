@@ -3,7 +3,6 @@ import './header.scss';
 export function Header() {
   return (
     <header>
-      <h1>The Simpsons API Challenge</h1>
       <div className="header-container">
         <img
           className="title-header"

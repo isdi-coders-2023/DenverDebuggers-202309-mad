@@ -3,11 +3,16 @@ import '@testing-library/jest-dom';
 import { Pagination } from './pagination';
 import { userEvent } from '@testing-library/user-event';
 import { AppContext, ContextStructure } from '../../context/app.context';
+import { State } from '../../reducer/actions';
 
 describe('Given Footer component', () => {
   describe('When we instantiate', () => {
     const value: ContextStructure = {
       characterTools: {
+        state: {
+          characters: [{ Nombre: 'Bart' }],
+          page: 1,
+        } as State,
         handleNext: jest.fn(),
         handlePrevious: jest.fn(),
       },

@@ -3,12 +3,12 @@ import { useContext, useEffect } from 'react';
 
 export function Pagination() {
   const {
-    characterTools: { page, handleNext, handlePrevious },
+    characterTools: { state, handleNext, handlePrevious },
   } = useContext(AppContext);
 
   useEffect(() => {
-    console.log(page);
-  }, [page]);
+    console.log(state.page);
+  }, [state.page]);
 
   return (
     <>

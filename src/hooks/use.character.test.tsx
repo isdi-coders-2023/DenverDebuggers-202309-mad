@@ -8,12 +8,14 @@ import { Character } from '../models/character';
 describe('Given the useTask hook', () => {
   ApiSimpsons.prototype.getAll = jest
     .fn()
-    .mockResolvedValue([{ id: 34 } as unknown as Character]);
+    .mockResolvedValue([{ id: 34 } as unknown as Character]); /* 
+  const handleNext = jest.fn();
+  const handlePrevious = jest.fn(); */
 
   describe('When we run the hook inside a component', () => {
     beforeEach(async () => {
       const TestComponent = () => {
-        const { characters, loadCharacters } = useCharacters();
+        const { loadCharacters } = useCharacters();
 
         useEffect(() => {
           loadCharacters();
@@ -22,7 +24,6 @@ describe('Given the useTask hook', () => {
         return (
           <>
             <h1>Test Component</h1>
-            {console.log(characters)}
             <button>Update</button>
             <button>Delete</button>
           </>
@@ -38,7 +39,11 @@ describe('Given the useTask hook', () => {
       const element = screen.getByRole('heading');
       expect(element).toBeInTheDocument();
       let item = screen.getByText('Delete');
-      expect(item).toBeInTheDocument();
+      expect(item).toBeInTheDocument(); /* 
+      item = screen.getByRole('button');
+      expect(handleNext).toHaveBeenCalled();
+      item = screen.getByRole('button');
+      expect(handlePrevious).toHaveBeenCalled(); */
     });
   });
 });

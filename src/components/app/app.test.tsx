@@ -15,7 +15,7 @@ describe('Given App component', () => {
       );
     });
     test('It should be in the document', () => {
-      const element = screen.getAllByRole('heading')[0];
+      const element = screen.getByRole('banner');
       expect(element).toBeInTheDocument();
     });
     test('Then it should render the title', () => {
