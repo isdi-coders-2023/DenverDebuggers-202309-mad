@@ -16,7 +16,12 @@ export type ChangePage = {
   type: 'page';
   payload: number;
 };
-export type ActionCharacter = ActionCharacterAll | ChangePage;
+
+export type Default = {
+  type: '';
+  payload: null;
+};
+export type ActionCharacter = ActionCharacterAll | ChangePage | Default;
 
 export const changePage = (payload: number): ActionCharacter => ({
   type: 'page',
