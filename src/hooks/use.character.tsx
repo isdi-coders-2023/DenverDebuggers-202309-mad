@@ -8,7 +8,7 @@ export function useCharacters() {
   const initialValue: State = { characters: [], page: 1 };
   const [state, dispatch] = useReducer(characterReducer, initialValue);
 
-  const repo = useMemo(() => new ApiSimpsons(state.page), []);
+  const repo = useMemo(() => new ApiSimpsons(state.page), [state.page]);
 
   const loadCharacters = useCallback(async () => {
     try {

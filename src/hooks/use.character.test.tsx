@@ -13,7 +13,7 @@ describe('Given the useTask hook', () => {
   describe('When we run the hook inside a component', () => {
     beforeEach(async () => {
       const TestComponent = () => {
-        const { characters, loadCharacters } = useCharacters();
+        const { loadCharacters } = useCharacters();
 
         useEffect(() => {
           loadCharacters();
@@ -22,7 +22,6 @@ describe('Given the useTask hook', () => {
         return (
           <>
             <h1>Test Component</h1>
-            {console.log(characters)}
             <button>Update</button>
             <button>Delete</button>
           </>
