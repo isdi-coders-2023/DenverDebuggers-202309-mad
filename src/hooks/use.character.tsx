@@ -1,8 +1,7 @@
 import { SyntheticEvent, useCallback, useMemo, useReducer } from 'react';
 import { ApiSimpsons } from '../services/api.repo';
 import { characterReducer } from '../reducer/reducer';
-import { loadActionCreator, changePage } from '../reducer/actions';
-import { State } from '../reducer/actions';
+import { loadActionCreator, changePage, State } from '../reducer/actions';
 
 export function useCharacters() {
   const initialValue: State = { characters: [], page: 1 };
