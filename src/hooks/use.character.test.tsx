@@ -20,7 +20,13 @@ describe('Given the useTask hook', () => {
   describe('When we run the hook inside a component', () => {
     beforeEach(async () => {
       const TestComponent = () => {
-        const { loadCharacters, handleNext, handlePrevious } = useCharacters();
+        const {
+          loadCharacters,
+          handleNext,
+          handlePrevious,
+          handleHome,
+          handleFilter,
+        } = useCharacters();
 
         useEffect(() => {
           loadCharacters();
@@ -32,16 +38,14 @@ describe('Given the useTask hook', () => {
             <button onClick={loadCharacters}>Load</button>
             <button onClick={handlePrevious}>Previous</button>
             <button onClick={handleNext}>Next</button>
+            <button onClick={handleFilter}>Filter</button>
+            <button onClick={handleHome}>Home</button>
           </>
         );
       };
 
       await act(async () => {
-        render(
-          <>
-            <TestComponent></TestComponent>
-          </>
-        );
+        render(<TestComponent></TestComponent>);
       });
     });
 
@@ -49,22 +53,39 @@ describe('Given the useTask hook', () => {
       const element = screen.getByRole('heading');
       expect(element).toBeInTheDocument();
     });
+
     test('', async () => {
       const loadbutton = screen.getByText('Load');
       await userEvent.click(loadbutton);
       expect(ApiSimpsons.prototype.getAll).toHaveBeenCalled();
     });
+
     test('Then it should have been called ', async () => {
       let reducer;
       reducer = jest.fn();
 
-      const mockInitialState: State = { page: 1 } as unknown as State;
+      const mockInitialState: State = {
+        page: 1,
+        selectedValue: 'load',
+      } as unknown as State;
       const nextButton = screen.getByText('Next');
       expect(nextButton).toBeInTheDocument();
       await userEvent.click(nextButton);
       expect(useReducer(reducer, mockInitialState)[1]).toHaveBeenCalled();
       const prevButton = screen.getByText('Previous');
       await userEvent.click(prevButton);
+      expect(useReducer(reducer, mockInitialState)[1]).toHaveBeenCalled();
+      const filter = screen.getByText('Filter');
+      expect(filter).toBeInTheDocument();
+      await userEvent.click(filter);
+      expect(useReducer(reducer, mockInitialState)[1]).toHaveBeenCalled();
+      const home = screen.getByText('Home');
+      expect(home).toBeInTheDocument();
+      await userEvent.click(home);
+      expect(useReducer(reducer, mockInitialState)[1]).toHaveBeenCalled();
+      const load = screen.getByText('Load');
+      expect(load).toBeInTheDocument();
+      await userEvent.click(load);
       expect(useReducer(reducer, mockInitialState)[1]).toHaveBeenCalled();
     });
   });
