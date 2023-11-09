@@ -1,7 +1,7 @@
 import { List } from '../../components/list/list';
 import { Pagination } from '../../components/pagination/pagination';
 
-export default function HomePage() {
+export default function Page() {
   return (
     <>
       <List></List>
