@@ -51,6 +51,7 @@ export function useCharacters() {
     event.preventDefault();
     dispatch(changePage(state.page - 1));
   };
+
   const handleFilter = (event: SyntheticEvent) => {
     event.preventDefault();
     const element = event.target as HTMLInputElement;

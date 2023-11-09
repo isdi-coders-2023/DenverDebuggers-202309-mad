@@ -3,11 +3,9 @@ import { useContext } from 'react';
 
 export function Filter() {
   const { handleFilter, state } = useContext(AppContext);
-  const filteredCharacters = state.filteredCharacters;
-  console.log(filteredCharacters);
   return (
     <div>
-      <label htmlFor="filter">Filtro: </label>
+      <label htmlFor="filter">Estado: </label>
       <select name="filter" onChange={handleFilter} value={state.selectedValue}>
         <option value="">Todos</option>
         <option value="Vivo">Vivo</option>

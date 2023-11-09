@@ -8,10 +8,10 @@ export function Pagination() {
   useEffect(() => {}, [state.page]);
   return (
     <div className="button-container">
-      <button onClick={handlePrevious} disabled={state.page === 1 && true}>
+      <button onClick={handlePrevious} disabled={state.page === 1}>
         Previous
       </button>
-      <button onClick={handleNext} disabled={state.page === 109 && true}>
+      <button onClick={handleNext} disabled={state.page === 109}>
         Next
       </button>
     </div>
