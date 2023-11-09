@@ -1,3 +1,3 @@
-export function Error() {
-  return <p>Hola esto es una pagina de error</p>;
+export function ErrorComponent() {
+  return <p>Error Message</p>;
 }
