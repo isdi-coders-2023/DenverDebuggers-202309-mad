@@ -5,9 +5,7 @@ import './pagination.scss';
 export function Pagination() {
   const { state, handleNext, handlePrevious } = useContext(AppContext);
 
-  useEffect(() => {
-    console.log(state.page);
-  }, [state.page]);
+  useEffect(() => {}, [state.page]);
 
   return (
     <div className="button-container">

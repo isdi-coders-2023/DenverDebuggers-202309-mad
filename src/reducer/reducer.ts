@@ -6,10 +6,25 @@ export function characterReducer(
 ): State {
   switch (type) {
     case 'load':
-      return { characters: payload, page: state.page };
+      return {
+        characters: payload,
+        page: state.page,
+        filteredCharacters: state.filteredCharacters,
+      };
 
     case 'page':
-      return { characters: state.characters, page: payload };
+      return {
+        characters: state.characters,
+        page: payload,
+        filteredCharacters: state.filteredCharacters,
+      };
+
+    case 'filter':
+      return {
+        characters: state.characters,
+        page: state.page,
+        filteredCharacters: payload,
+      };
 
     default:
       return { ...state };
