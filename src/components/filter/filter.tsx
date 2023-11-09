@@ -7,9 +7,9 @@ export function Filter() {
   console.log(filteredCharacters);
   return (
     <div>
-      <label htmlFor="filter">Filter: </label>
-      <select name="filter" onChange={handleFilter}>
-        <option value="">Seleccione uno</option>
+      <label htmlFor="filter">Filtro: </label>
+      <select name="filter" onChange={handleFilter} value={state.selectedValue}>
+        <option value="">Todos</option>
         <option value="Vivo">Vivo</option>
         <option value="Fallecido">Fallecido</option>
         <option value="Ficticio">Ficticio</option>

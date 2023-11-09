@@ -1,11 +1,18 @@
 import { useContext } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { AppContext } from '../../context/app.context';
 import './details.scss';
+import { Character } from '../../models/character';
 export function Details() {
   const { id } = useParams();
   const { state } = useContext(AppContext);
-  const characters = state.characters;
+  let characters: Character[] = [];
+  if (state.selectedValue === '') {
+    characters = state.characters;
+  } else {
+    characters = state.filteredCharacters;
+  }
+
   const character = characters.find((element) => element._id === id);
 
   return (
@@ -28,6 +35,9 @@ export function Details() {
           <span>Ocupación: </span>
           {character?.Ocupacion}
         </p>
+        <Link to={'/'}>
+          <img src="/arrow.png" alt="Boton para ir para atras" width={23} />
+        </Link>
       </div>
     </div>
   );

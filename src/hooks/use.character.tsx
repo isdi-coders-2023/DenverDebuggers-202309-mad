@@ -6,6 +6,7 @@ import {
   changePage,
   State,
   filterCharacters,
+  selectedValue,
 } from '../reducer/actions';
 
 export function useCharacters() {
@@ -13,10 +14,14 @@ export function useCharacters() {
     characters: [],
     page: 1,
     filteredCharacters: [],
+    selectedValue: '',
   };
   const [state, dispatch] = useReducer(characterReducer, initialValue);
 
-  const repo = useMemo(() => new ApiSimpsons(state.page), [state.page]);
+  const repo = useMemo(
+    () => new ApiSimpsons(state.page),
+    [state.page, state.selectedValue]
+  );
 
   const loadCharacters = useCallback(async () => {
     try {
@@ -24,10 +29,15 @@ export function useCharacters() {
       const loadedRepo = await repo.getAll();
       const loadedCharacters = loadedRepo.docs;
       console.log(loadedCharacters);
-      dispatch(filterCharacters([]));
       // Síncrono
-
-      dispatch(loadActionCreator(loadedCharacters));
+      if (state.selectedValue === '') {
+        dispatch(loadActionCreator(loadedCharacters));
+      } else {
+        const filtered = loadedCharacters.filter((character) =>
+          character.Estado.includes(state.selectedValue)
+        );
+        dispatch(filterCharacters(filtered));
+      }
     } catch (error) {}
   }, [repo]);
 
@@ -46,12 +56,13 @@ export function useCharacters() {
     const element = event.target as HTMLInputElement;
     const value = element.value;
     console.log(value);
-
-    const filtered = state.characters.filter((character) =>
-      character.Estado.includes(value)
-    );
-    dispatch(filterCharacters(filtered));
+    dispatch(selectedValue(value));
   };
+
+  function handleHome() {
+    dispatch(changePage(1));
+    dispatch(selectedValue(''));
+  }
 
   return {
     loadCharacters,
@@ -59,5 +70,6 @@ export function useCharacters() {
     handlePrevious,
     state,
     handleFilter,
+    handleHome,
   };
 }

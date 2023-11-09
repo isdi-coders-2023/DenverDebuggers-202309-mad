@@ -12,10 +12,10 @@ export function List() {
   }, [loadCharacters]);
 
   let chars = [];
-  if (state.filteredCharacters.length > 0) {
-    chars = state.filteredCharacters;
-  } else {
+  if (state.selectedValue === '') {
     chars = state.characters;
+  } else {
+    chars = state.filteredCharacters;
   }
 
   return (

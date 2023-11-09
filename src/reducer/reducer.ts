@@ -10,6 +10,7 @@ export function characterReducer(
         characters: payload,
         page: state.page,
         filteredCharacters: state.filteredCharacters,
+        selectedValue: state.selectedValue,
       };
 
     case 'page':
@@ -17,6 +18,7 @@ export function characterReducer(
         characters: state.characters,
         page: payload,
         filteredCharacters: state.filteredCharacters,
+        selectedValue: state.selectedValue,
       };
 
     case 'filter':
@@ -24,6 +26,15 @@ export function characterReducer(
         characters: state.characters,
         page: state.page,
         filteredCharacters: payload,
+        selectedValue: state.selectedValue,
+      };
+
+    case 'select':
+      return {
+        characters: state.characters,
+        page: state.page,
+        filteredCharacters: state.filteredCharacters,
+        selectedValue: payload,
       };
 
     default:
