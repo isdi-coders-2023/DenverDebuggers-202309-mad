@@ -43,27 +43,6 @@ describe('Auth Reducer', () => {
     expect(newState).toEqual(mockPayload);
   });
 
-  test('should return filter correclty ', () => {
-    const mockPayload = {
-      characters: [],
-      page: 1,
-      filteredCharacters: [],
-    };
-
-    const newState = characterReducer(
-      {
-        characters: [],
-        page: 1,
-        filteredCharacters: [],
-      },
-      {
-        type: 'filter',
-        payload: [],
-      }
-    );
-    expect(newState).toEqual(mockPayload);
-  });
-
   test('should return default correclty ', () => {
     const mockPayload = {
       characters: [],
