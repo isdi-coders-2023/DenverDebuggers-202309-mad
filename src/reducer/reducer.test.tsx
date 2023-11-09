@@ -6,6 +6,7 @@ describe('Auth Reducer', () => {
       characters: [],
       page: 1,
       filteredCharacters: [],
+      selectedValue: '',
     };
 
     const newState = characterReducer(
@@ -13,6 +14,7 @@ describe('Auth Reducer', () => {
         characters: [],
         page: 1,
         filteredCharacters: [],
+        selectedValue: '',
       },
       {
         type: 'load',
@@ -27,6 +29,7 @@ describe('Auth Reducer', () => {
       characters: [],
       page: 1,
       filteredCharacters: [],
+      selectedValue: '',
     };
 
     const newState = characterReducer(
@@ -34,10 +37,34 @@ describe('Auth Reducer', () => {
         characters: [],
         page: 1,
         filteredCharacters: [],
+        selectedValue: '',
       },
       {
         type: 'page',
         payload: 1,
+      }
+    );
+    expect(newState).toEqual(mockPayload);
+  });
+
+  test('should return page correclty ', () => {
+    const mockPayload = {
+      characters: [],
+      page: 1,
+      filteredCharacters: [],
+      selectedValue: '',
+    };
+
+    const newState = characterReducer(
+      {
+        characters: [],
+        page: 1,
+        filteredCharacters: [],
+        selectedValue: '',
+      },
+      {
+        type: 'select',
+        payload: '',
       }
     );
     expect(newState).toEqual(mockPayload);
@@ -48,6 +75,7 @@ describe('Auth Reducer', () => {
       characters: [],
       page: 1,
       filteredCharacters: [],
+      selectedValue: '',
     };
 
     const newState = characterReducer(
@@ -55,6 +83,7 @@ describe('Auth Reducer', () => {
         characters: [],
         page: 1,
         filteredCharacters: [],
+        selectedValue: '',
       },
       {
         type: '',
