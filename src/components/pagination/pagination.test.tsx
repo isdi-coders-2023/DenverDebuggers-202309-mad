@@ -10,7 +10,9 @@ describe('Given Footer component', () => {
     const value: ContextStructure = {
       state: {
         characters: [{ Nombre: 'Bart' }],
-        page: 1,
+        page: 2,
+        filteredCharacters: [{}],
+        selectedValue: '',
       } as State,
       handleNext: jest.fn(),
       handlePrevious: jest.fn(),

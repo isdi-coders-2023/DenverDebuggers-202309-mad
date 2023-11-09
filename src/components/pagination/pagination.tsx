@@ -5,14 +5,15 @@ import './pagination.scss';
 export function Pagination() {
   const { state, handleNext, handlePrevious } = useContext(AppContext);
 
-  useEffect(() => {
-    console.log(state.page);
-  }, [state.page]);
-
+  useEffect(() => {}, [state.page]);
   return (
     <div className="button-container">
-      <button onClick={handlePrevious}>Previous</button>
-      <button onClick={handleNext}>Next</button>
+      <button onClick={handlePrevious} disabled={state.page === 1}>
+        Previous
+      </button>
+      <button onClick={handleNext} disabled={state.page === 109}>
+        Next
+      </button>
     </div>
   );
 }

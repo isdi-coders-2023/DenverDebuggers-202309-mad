@@ -1,4 +1,4 @@
-type Status = 'Vivo' | 'Fallecido' | 'Ficticio';
+export type Status = 'Vivo' | 'Fallecido' | 'Ficticio';
 
 export type Character = {
   _id: string;

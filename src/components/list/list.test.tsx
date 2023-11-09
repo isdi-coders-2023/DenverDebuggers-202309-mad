@@ -9,6 +9,7 @@ const mockContext: ContextStructure = {
   state: {
     characters: [{ Nombre: 'Bart' }],
     page: 1,
+    filteredCharacters: [{ Nombre: 'Bart' }],
   } as State,
   loadCharacters: jest
     .fn()
