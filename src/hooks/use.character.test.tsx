@@ -1,21 +1,26 @@
 import { screen, render, act } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { useEffect } from 'react';
+import { useEffect, useReducer } from 'react';
 import { ApiSimpsons } from '../services/api.repo';
 import { useCharacters } from './use.character';
 import { Character } from '../models/character';
+import { userEvent } from '@testing-library/user-event';
+import { State } from '../reducer/actions';
+
+jest.mock('react', () => ({
+  ...jest.requireActual('react'),
+  useReducer: jest.fn().mockReturnValue([{}, jest.fn()]),
+}));
 
 describe('Given the useTask hook', () => {
   ApiSimpsons.prototype.getAll = jest
     .fn()
-    .mockResolvedValue([{ id: 34 } as unknown as Character]); /* 
-  const handleNext = jest.fn();
-  const handlePrevious = jest.fn(); */
+    .mockResolvedValue([{ id: 34 } as unknown as Character]);
 
   describe('When we run the hook inside a component', () => {
     beforeEach(async () => {
       const TestComponent = () => {
-        const { loadCharacters } = useCharacters();
+        const { loadCharacters, handleNext, handlePrevious } = useCharacters();
 
         useEffect(() => {
           loadCharacters();
@@ -24,26 +29,43 @@ describe('Given the useTask hook', () => {
         return (
           <>
             <h1>Test Component</h1>
-            <button>Update</button>
-            <button>Delete</button>
+            <button onClick={loadCharacters}>Load</button>
+            <button onClick={handlePrevious}>Previous</button>
+            <button onClick={handleNext}>Next</button>
           </>
         );
       };
 
       await act(async () => {
-        render(<TestComponent></TestComponent>);
+        render(
+          <>
+            <TestComponent></TestComponent>
+          </>
+        );
       });
     });
 
     test('Then it should be in the document', async () => {
       const element = screen.getByRole('heading');
       expect(element).toBeInTheDocument();
-      let item = screen.getByText('Delete');
-      expect(item).toBeInTheDocument(); /* 
-      item = screen.getByRole('button');
-      expect(handleNext).toHaveBeenCalled();
-      item = screen.getByRole('button');
-      expect(handlePrevious).toHaveBeenCalled(); */
+    });
+    test('', async () => {
+      const loadbutton = screen.getByText('Load');
+      await userEvent.click(loadbutton);
+      expect(ApiSimpsons.prototype.getAll).toHaveBeenCalled();
+    });
+    test('Then it should have been called ', async () => {
+      let reducer;
+      reducer = jest.fn();
+
+      const mockInitialState: State = { page: 1 } as unknown as State;
+      const nextButton = screen.getByText('Next');
+      expect(nextButton).toBeInTheDocument();
+      await userEvent.click(nextButton);
+      expect(useReducer(reducer, mockInitialState)[1]).toHaveBeenCalled();
+      const prevButton = screen.getByText('Previous');
+      await userEvent.click(prevButton);
+      expect(useReducer(reducer, mockInitialState)[1]).toHaveBeenCalled();
     });
   });
 });
