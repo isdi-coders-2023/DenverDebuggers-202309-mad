@@ -57,7 +57,27 @@ describe('Given ApiSimpsonPrivate class', () => {
       expect(createdCharacter).toBeDefined();
     });
   });
+  describe('When calling the create method', () => {
+    test('Then it should fetch data from the Api and return the response', async () => {
+      const privateData = {} as unknown as Partial<Character>;
+      const expectedUrl = 'http://localhost:3000/privateCharacters';
+      const repo = new ApiSimpsonsPrivate();
 
+      global.fetch = jest.fn().mockResolvedValue({
+        ok: true,
+        json: jest.fn().mockResolvedValue(privateData),
+      });
+      const response = await repo.createCharacter(privateData);
+      expect(global.fetch).toHaveBeenCalledWith(expectedUrl, {
+        method: 'POST',
+        body: JSON.stringify(privateData),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      expect(response).toEqual(privateData);
+    });
+  });
   describe('When we instantiate it and response is bad', () => {
     beforeEach(() => {
       global.fetch = jest.fn().mockResolvedValueOnce({

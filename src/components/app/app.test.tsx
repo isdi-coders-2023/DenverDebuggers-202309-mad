@@ -2,7 +2,7 @@ import { screen, render } from '@testing-library/react';
 import '@testing-library/jest-dom';
 
 import { AppContextProvider } from '../../context/app.context.provider';
-import { AppRoutes } from '../approutes/app.routes';
+import { AppRoutes } from '../app.routes/app.routes';
 import { BrowserRouter } from 'react-router-dom';
 
 describe('Given App component', () => {

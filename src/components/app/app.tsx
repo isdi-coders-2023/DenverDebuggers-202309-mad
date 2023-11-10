@@ -1,6 +1,6 @@
 import { Header } from '../header/header';
 import { Footer } from '../footer/footer';
-import { AppRoutes } from '../approutes/app.routes';
+import { AppRoutes } from '../app.routes/app.routes';
 
 export function App() {
   return (

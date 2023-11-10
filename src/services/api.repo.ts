@@ -36,8 +36,33 @@ export class ApiSimpsonsPrivate {
         'Content-Type': 'application/json',
       },
     });
+    return response.json();
+  }
+
+  async modifyCharacter(
+    id: Character['id'],
+    updatedCharacter: Partial<Character>
+  ): Promise<Character> {
+    const finalUrl = `${this.privateApiUrl}/${id}`;
+    const response = await fetch(finalUrl, {
+      method: 'PATCH',
+      body: JSON.stringify(updatedCharacter),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
     if (!response.ok)
-      throw new Error(response.status + '' + response.statusText);
+      throw new Error(response.status + ' ' + response.statusText);
+    return response.json();
+  }
+
+  async deleteCharacter(id: Character['id']): Promise<Character[]> {
+    const finalUrl = `${this.privateApiUrl}/${id}`;
+    const response = await fetch(finalUrl, {
+      method: 'DELETE',
+    });
+    if (!response.ok)
+      throw new Error(response.status + ' ' + response.statusText);
     return response.json();
   }
 }

@@ -3,12 +3,16 @@ import { Character } from '../../models/character';
 import './card.scss';
 type Props = {
   character: Character;
+  favorite: boolean;
 };
 
-export function Card({ character }: Props) {
+export function Card({ character, favorite }: Props) {
   return (
     <li className="character-card">
-      <Link to={'/details/' + character._id} style={{ textDecoration: 'none' }}>
+      <Link
+        to={(favorite ? '/details.favorite/' : '/details/') + character._id}
+        style={{ textDecoration: 'none' }}
+      >
         <div className="card-container">
           <div className="image-container">
             <img src={character.Imagen} alt={`imagen de ${character.Nombre}`} />

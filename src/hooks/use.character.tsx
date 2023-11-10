@@ -8,6 +8,8 @@ import {
   filterCharacters,
   selectedValue,
   createActionCreator,
+  updateActionCreator,
+  deleteActionCreator,
 } from '../reducer/actions';
 import { Character } from '../models/character';
 
@@ -54,8 +56,36 @@ export function useCharacters() {
 
   const addCharacter = async (character: Partial<Character>) => {
     try {
+      console.log('entro');
       const newCharacter = await repoFav.createCharacter(character);
       dispatch(createActionCreator(newCharacter));
+    } catch (error) {
+      console.log((error as Error).message);
+    }
+    console.log(character);
+    console.log(state.characters);
+  };
+
+  const modifyCharacter = async (
+    id: Character['_id'],
+    character: Partial<Character>
+  ) => {
+    console.log(id);
+    try {
+      const modifiedCharacter = await repoFav.modifyCharacter(id, character);
+      dispatch(updateActionCreator(modifiedCharacter));
+    } catch (error) {
+      console.log((error as Error).message);
+    }
+  };
+
+  const deleteCharacter = async (id: Character['id']) => {
+    try {
+      // Asíncrona -> API
+      await repoFav.deleteCharacter(id);
+      // Síncrono -> Vista
+      // setNotes(notes.filter((item) => item.id !== id));
+      dispatch(deleteActionCreator(id));
     } catch (error) {
       console.log((error as Error).message);
     }
@@ -94,5 +124,7 @@ export function useCharacters() {
     handleHome,
     addCharacter,
     loadCharactersFav,
+    modifyCharacter,
+    deleteCharacter,
   };
 }

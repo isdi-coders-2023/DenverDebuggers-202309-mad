@@ -1,0 +1,30 @@
+@import '../../vars.scss';
+
+.details-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  padding-block: 2rem;
+  .image-container {
+    min-height: 295px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    img {
+      max-height: 291px;
+    }
+  }
+  .info-container {
+    max-width: 30%;
+    h2 {
+      font-family: $kavoon-font;
+    }
+    p {
+      font-family: $kelly-slab-font;
+      span {
+        font-family: $kavoon-font;
+      }
+    }
+  }
+}

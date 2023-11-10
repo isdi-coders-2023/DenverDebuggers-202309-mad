@@ -24,7 +24,7 @@ export function List() {
       <Filter></Filter>
       <ul className="character-list">
         {chars.map((item) => (
-          <Card key={item._id} character={item}></Card>
+          <Card key={item._id} character={item} favorite={false}></Card>
         ))}
         <p>{chars.length < 1 && 'No hay personajes con este estado'}</p>
       </ul>

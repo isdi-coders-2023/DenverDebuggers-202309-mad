@@ -5,7 +5,6 @@ export default function FavoritePage() {
   return (
     <>
       <ListFavorite></ListFavorite>
-      <Pagination></Pagination>
     </>
   );
 }
