@@ -47,10 +47,7 @@ export function useCharacters() {
 
   const loadCharactersFav = useCallback(async () => {
     try {
-      // Asíncrona
       const loadedCharacters = await repoFav.getPrivateCharacters();
-      // Síncrono
-      // setNotes(loadedNotes);
       console.log(loadedCharacters);
       dispatch(loadActionCreator(loadedCharacters));
     } catch (error) {
@@ -60,10 +57,7 @@ export function useCharacters() {
 
   const addCharacter = async (character: Partial<Character>) => {
     try {
-      // Asíncrona -> API
       const newCharacter = await repoFav.createCharacter(character);
-      // Síncrono -> Vista
-      // setNotes([...notes, newNote]);
       dispatch(createActionCreator(newCharacter));
     } catch (error) {
       console.log((error as Error).message);

@@ -26,6 +26,7 @@ describe('Given the useTask hook', () => {
           handlePrevious,
           handleHome,
           handleFilter,
+          loadCharactersFav,
         } = useCharacters();
 
         useEffect(() => {
@@ -35,7 +36,7 @@ describe('Given the useTask hook', () => {
         return (
           <>
             <h1>Test Component</h1>
-            <button onClick={loadCharacters}>Load</button>
+            <button onClick={loadCharactersFav}>Load</button>
             <button onClick={handlePrevious}>Previous</button>
             <button onClick={handleNext}>Next</button>
             <button onClick={handleFilter}>Filter</button>
