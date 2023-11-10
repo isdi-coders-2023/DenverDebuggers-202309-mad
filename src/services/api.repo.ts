@@ -1,4 +1,4 @@
-import { Repo } from '../models/character';
+import { Character, Repo } from '../models/character';
 
 export class ApiSimpsons {
   url: string;
@@ -15,6 +15,29 @@ export class ApiSimpsons {
     console.log(this.characterUrl);
     if (!response.ok)
       throw new Error(response.status + ' ' + response.statusText);
+    return response.json();
+  }
+}
+
+export class ApiSimpsonsPrivate {
+  privateApiUrl = 'http://localhost:3000/privateCharacters';
+
+  async getPrivateCharacters(): Promise<Character[]> {
+    const response = await fetch(this.privateApiUrl);
+    if (!response.ok) throw new Error(response.status + '' + response.status);
+    return response.json();
+  }
+
+  async createCharacter(newCharacter: Partial<Character>): Promise<Character> {
+    const response = await fetch(this.privateApiUrl, {
+      method: 'POST',
+      body: JSON.stringify(newCharacter),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    if (!response.ok)
+      throw new Error(response.status + '' + response.statusText);
     return response.json();
   }
 }

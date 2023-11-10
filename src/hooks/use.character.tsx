@@ -1,5 +1,5 @@
 import { SyntheticEvent, useCallback, useMemo, useReducer } from 'react';
-import { ApiSimpsons } from '../services/api.repo';
+import { ApiSimpsons, ApiSimpsonsPrivate } from '../services/api.repo';
 import { characterReducer } from '../reducer/reducer';
 import {
   loadActionCreator,
@@ -7,7 +7,9 @@ import {
   State,
   filterCharacters,
   selectedValue,
+  createActionCreator,
 } from '../reducer/actions';
+import { Character } from '../models/character';
 
 export function useCharacters() {
   const initialValue: State = {
@@ -22,6 +24,8 @@ export function useCharacters() {
     () => new ApiSimpsons(state.page),
     [state.page, state.selectedValue]
   );
+
+  const repoFav = useMemo(() => new ApiSimpsonsPrivate(), []);
 
   const loadCharacters = useCallback(async () => {
     try {
@@ -40,6 +44,31 @@ export function useCharacters() {
       }
     } catch (error) {}
   }, [repo]);
+
+  const loadCharactersFav = useCallback(async () => {
+    try {
+      // Asíncrona
+      const loadedCharacters = await repoFav.getPrivateCharacters();
+      // Síncrono
+      // setNotes(loadedNotes);
+      console.log(loadedCharacters);
+      dispatch(loadActionCreator(loadedCharacters));
+    } catch (error) {
+      console.log((error as Error).message);
+    }
+  }, [repoFav]);
+
+  const addCharacter = async (character: Partial<Character>) => {
+    try {
+      // Asíncrona -> API
+      const newCharacter = await repoFav.createCharacter(character);
+      // Síncrono -> Vista
+      // setNotes([...notes, newNote]);
+      dispatch(createActionCreator(newCharacter));
+    } catch (error) {
+      console.log((error as Error).message);
+    }
+  };
 
   const handleNext = (event: SyntheticEvent) => {
     event.preventDefault();
@@ -72,5 +101,7 @@ export function useCharacters() {
     state,
     handleFilter,
     handleHome,
+    addCharacter,
+    loadCharactersFav,
   };
 }
