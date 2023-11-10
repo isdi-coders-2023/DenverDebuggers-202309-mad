@@ -48,11 +48,8 @@ export function useCharacters() {
   const loadCharactersFav = useCallback(async () => {
     try {
       const loadedCharacters = await repoFav.getPrivateCharacters();
-      console.log(loadedCharacters);
       dispatch(loadActionCreator(loadedCharacters));
-    } catch (error) {
-      console.log((error as Error).message);
-    }
+    } catch (error) {}
   }, [repoFav]);
 
   const addCharacter = async (character: Partial<Character>) => {

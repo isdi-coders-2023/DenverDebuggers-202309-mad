@@ -1,7 +1,7 @@
 import { screen, render, act } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { useEffect, useReducer } from 'react';
-import { ApiSimpsons } from '../services/api.repo';
+import { ApiSimpsons, ApiSimpsonsPrivate } from '../services/api.repo';
 import { useCharacters } from './use.character';
 import { Character } from '../models/character';
 import { userEvent } from '@testing-library/user-event';
@@ -14,6 +14,9 @@ jest.mock('react', () => ({
 
 describe('Given the useTask hook', () => {
   ApiSimpsons.prototype.getAll = jest
+    .fn()
+    .mockResolvedValue([{ id: 34 } as unknown as Character]);
+  ApiSimpsonsPrivate.prototype.getPrivateCharacters = jest
     .fn()
     .mockResolvedValue([{ id: 34 } as unknown as Character]);
 
@@ -32,11 +35,15 @@ describe('Given the useTask hook', () => {
         useEffect(() => {
           loadCharacters();
         }, [loadCharacters]);
-
+        useEffect(() => {
+          loadCharactersFav();
+        }, [loadCharactersFav]);
         return (
           <>
             <h1>Test Component</h1>
-            <button onClick={loadCharactersFav}>Load</button>
+
+            <button onClick={loadCharacters}>Load</button>
+            <button onClick={loadCharactersFav}>LoadFav</button>
             <button onClick={handlePrevious}>Previous</button>
             <button onClick={handleNext}>Next</button>
             <button onClick={handleFilter}>Filter</button>
@@ -55,10 +62,18 @@ describe('Given the useTask hook', () => {
       expect(element).toBeInTheDocument();
     });
 
-    test('', async () => {
+    test('Test of loading characters public api', async () => {
       const loadbutton = screen.getByText('Load');
       await userEvent.click(loadbutton);
       expect(ApiSimpsons.prototype.getAll).toHaveBeenCalled();
+    });
+
+    test('Test of loading characters private api', async () => {
+      const loadbutton = screen.getByText('LoadFav');
+      await userEvent.click(loadbutton);
+      expect(
+        ApiSimpsonsPrivate.prototype.getPrivateCharacters
+      ).toHaveBeenCalled();
     });
 
     test('Then it should have been called ', async () => {

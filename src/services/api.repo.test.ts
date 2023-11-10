@@ -50,6 +50,12 @@ describe('Given ApiSimpsonPrivate class', () => {
       expect(jsonMock).toHaveBeenCalled();
       expect(result).toStrictEqual(expected);
     });
+    test('Then method createCharacters should be used', async () => {
+      const newCharacter = { Nombre: 'Homer Simpson', Genero: 'masculino' };
+      const repo = await new ApiSimpsonsPrivate();
+      const createdCharacter = await repo.createCharacter(newCharacter);
+      expect(createdCharacter).toBeDefined();
+    });
   });
 
   describe('When we instantiate it and response is bad', () => {
