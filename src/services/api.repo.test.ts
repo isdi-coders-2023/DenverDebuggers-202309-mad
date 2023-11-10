@@ -52,7 +52,7 @@ describe('Given ApiSimpsonPrivate class', () => {
     });
     test('Then method createCharacters should be used', async () => {
       const newCharacter = { Nombre: 'Homer Simpson', Genero: 'masculino' };
-      const repo = await new ApiSimpsonsPrivate();
+      const repo = new ApiSimpsonsPrivate();
       const createdCharacter = await repo.createCharacter(newCharacter);
       expect(createdCharacter).toBeDefined();
     });

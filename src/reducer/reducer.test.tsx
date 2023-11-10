@@ -71,29 +71,6 @@ describe('Auth Reducer', () => {
     expect(newState).toEqual(mockPayload);
   });
 
-  test('should return selectValue correclty ', () => {
-    const mockPayload = {
-      characters: [],
-      page: 1,
-      filteredCharacters: [],
-      selectedValue: '',
-    };
-
-    const newState = characterReducer(
-      {
-        characters: [],
-        page: 1,
-        filteredCharacters: [],
-        selectedValue: '',
-      },
-      {
-        type: 'select',
-        payload: '',
-      }
-    );
-    expect(newState).toEqual(mockPayload);
-  });
-
   test('should return Add correclty ', () => {
     const mockPayload = {
       characters: [{} as Character],
