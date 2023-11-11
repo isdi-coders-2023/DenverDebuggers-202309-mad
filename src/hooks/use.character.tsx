@@ -1,5 +1,5 @@
 import { SyntheticEvent, useCallback, useMemo, useReducer } from 'react';
-import { ApiSimpsons } from '../services/api.repo';
+import { ApiSimpsons, ApiSimpsonsPrivate } from '../services/api.repo';
 import { characterReducer } from '../reducer/reducer';
 import {
   loadActionCreator,
@@ -7,7 +7,11 @@ import {
   State,
   filterCharacters,
   selectedValue,
+  createActionCreator,
+  updateActionCreator,
+  deleteActionCreator,
 } from '../reducer/actions';
+import { Character } from '../models/character';
 
 export function useCharacters() {
   const initialValue: State = {
@@ -22,6 +26,8 @@ export function useCharacters() {
     () => new ApiSimpsons(state.page),
     [state.page, state.selectedValue]
   );
+
+  const repoFav = useMemo(() => new ApiSimpsonsPrivate(), []);
 
   const loadCharacters = useCallback(async () => {
     try {
@@ -40,6 +46,44 @@ export function useCharacters() {
       }
     } catch (error) {}
   }, [repo]);
+
+  const loadCharactersFav = useCallback(async () => {
+    try {
+      const loadedCharacters = await repoFav.getPrivateCharacters();
+      dispatch(loadActionCreator(loadedCharacters));
+    } catch (error) {}
+  }, [repoFav]);
+
+  const addCharacter = async (character: Partial<Character>) => {
+    try {
+      console.log('entro');
+      const newCharacter = await repoFav.createCharacter(character);
+      dispatch(createActionCreator(newCharacter));
+    } catch (error) {
+      console.log((error as Error).message);
+    }
+  };
+
+  const modifyCharacter = async (
+    id: Character['_id'],
+    character: Partial<Character>
+  ) => {
+    try {
+      const modifiedCharacter = await repoFav.modifyCharacter(id, character);
+      dispatch(updateActionCreator(modifiedCharacter));
+    } catch (error) {
+      console.log((error as Error).message);
+    }
+  };
+
+  const deleteCharacter = async (id: Character['id']) => {
+    try {
+      await repoFav.deleteCharacter(id);
+      dispatch(deleteActionCreator(id));
+    } catch (error) {
+      console.log((error as Error).message);
+    }
+  };
 
   const handleNext = (event: SyntheticEvent) => {
     event.preventDefault();
@@ -72,5 +116,9 @@ export function useCharacters() {
     state,
     handleFilter,
     handleHome,
+    addCharacter,
+    loadCharactersFav,
+    modifyCharacter,
+    deleteCharacter,
   };
 }

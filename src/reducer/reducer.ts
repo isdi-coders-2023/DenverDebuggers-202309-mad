@@ -37,6 +37,32 @@ export function characterReducer(
         selectedValue: payload,
       };
 
+    case 'create':
+      return {
+        characters: [...state.characters, payload],
+        page: state.page,
+        filteredCharacters: state.filteredCharacters,
+        selectedValue: state.selectedValue,
+      };
+
+    case 'update':
+      return {
+        characters: state.characters.map((item) =>
+          item._id === payload._id ? payload : item
+        ),
+        page: state.page,
+        filteredCharacters: state.filteredCharacters,
+        selectedValue: state.selectedValue,
+      };
+
+    case 'delete':
+      return {
+        characters: state.characters.filter((item) => item._id !== payload),
+        page: state.page,
+        filteredCharacters: state.filteredCharacters,
+        selectedValue: state.selectedValue,
+      };
+
     default:
       return { ...state };
   }

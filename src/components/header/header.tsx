@@ -26,10 +26,14 @@ export function Header() {
         />
         <div className="header-buttons-container">
           <div>
-            <button>Personajes</button>
+            <Link to={'/home'}>
+              <button>Personajes</button>
+            </Link>
           </div>
           <div>
-            <button>Favoritos</button>
+            <Link to={'/favorites'}>
+              <button>Favoritos</button>
+            </Link>
           </div>
         </div>
       </div>

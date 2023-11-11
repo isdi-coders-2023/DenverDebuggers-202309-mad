@@ -14,6 +14,16 @@ type ActionCharacterAll = {
   payload: Character[];
 };
 
+type ActionCharactersCharacter = {
+  type: 'create' | 'update';
+  payload: Character;
+};
+
+type ActionCharacterId = {
+  type: 'delete';
+  payload: Character['_id'];
+};
+
 export type ChangePage = {
   type: 'page';
   payload: number;
@@ -38,6 +48,8 @@ export type ActionCharacter =
   | ChangePage
   | FilterCharacters
   | SelectedValue
+  | ActionCharactersCharacter
+  | ActionCharacterId
   | Default;
 
 export const changePage = (payload: number): ActionCharacter => ({
@@ -57,5 +69,22 @@ export const filterCharacters = (payload: Character[]): ActionCharacter => ({
 
 export const selectedValue = (payload: string): ActionCharacter => ({
   type: 'select',
+  payload,
+});
+
+export const createActionCreator = (payload: Character): ActionCharacter => ({
+  type: 'create',
+  payload,
+});
+
+export const updateActionCreator = (payload: Character): ActionCharacter => ({
+  type: 'update',
+  payload,
+});
+
+export const deleteActionCreator = (
+  payload: Character['_id']
+): ActionCharacter => ({
+  type: 'delete',
   payload,
 });

@@ -1,7 +1,7 @@
 import { screen, render, act } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { useEffect, useReducer } from 'react';
-import { ApiSimpsons } from '../services/api.repo';
+import { ApiSimpsons, ApiSimpsonsPrivate } from '../services/api.repo';
 import { useCharacters } from './use.character';
 import { Character } from '../models/character';
 import { userEvent } from '@testing-library/user-event';
@@ -16,6 +16,9 @@ describe('Given the useTask hook', () => {
   ApiSimpsons.prototype.getAll = jest
     .fn()
     .mockResolvedValue([{ id: 34 } as unknown as Character]);
+  ApiSimpsonsPrivate.prototype.getPrivateCharacters = jest
+    .fn()
+    .mockResolvedValue([{ id: 34 } as unknown as Character]);
 
   describe('When we run the hook inside a component', () => {
     beforeEach(async () => {
@@ -26,20 +29,35 @@ describe('Given the useTask hook', () => {
           handlePrevious,
           handleHome,
           handleFilter,
+          loadCharactersFav,
+          deleteCharacter,
+          modifyCharacter,
+          addCharacter,
         } = useCharacters();
 
         useEffect(() => {
           loadCharacters();
         }, [loadCharacters]);
-
+        useEffect(() => {
+          loadCharactersFav();
+        }, [loadCharactersFav]);
         return (
           <>
             <h1>Test Component</h1>
+
             <button onClick={loadCharacters}>Load</button>
+            <button onClick={loadCharactersFav}>LoadFav</button>
             <button onClick={handlePrevious}>Previous</button>
             <button onClick={handleNext}>Next</button>
             <button onClick={handleFilter}>Filter</button>
             <button onClick={handleHome}>Home</button>
+            <button onClick={() => addCharacter({ Nombre: 'Bart' })}>
+              Add
+            </button>
+            <button onClick={() => deleteCharacter('1234')}>Delete</button>
+            <button onClick={() => modifyCharacter('1234', { Nombre: 'Bart' })}>
+              Modify
+            </button>
           </>
         );
       };
@@ -54,10 +72,18 @@ describe('Given the useTask hook', () => {
       expect(element).toBeInTheDocument();
     });
 
-    test('', async () => {
+    test('Test of loading characters public api', async () => {
       const loadbutton = screen.getByText('Load');
       await userEvent.click(loadbutton);
       expect(ApiSimpsons.prototype.getAll).toHaveBeenCalled();
+    });
+
+    test('Test of loading characters private api', async () => {
+      const loadbutton = screen.getByText('LoadFav');
+      await userEvent.click(loadbutton);
+      expect(
+        ApiSimpsonsPrivate.prototype.getPrivateCharacters
+      ).toHaveBeenCalled();
     });
 
     test('Then it should have been called ', async () => {
@@ -83,9 +109,25 @@ describe('Given the useTask hook', () => {
       expect(home).toBeInTheDocument();
       await userEvent.click(home);
       expect(useReducer(reducer, mockInitialState)[1]).toHaveBeenCalled();
+
       const load = screen.getByText('Load');
       expect(load).toBeInTheDocument();
       await userEvent.click(load);
+      expect(useReducer(reducer, mockInitialState)[1]).toHaveBeenCalled();
+
+      const deleteChar = screen.getByText('Delete');
+      expect(deleteChar).toBeInTheDocument();
+      await userEvent.click(deleteChar);
+      expect(useReducer(reducer, mockInitialState)[1]).toHaveBeenCalled();
+
+      const modifyChar = screen.getByText('Modify');
+      expect(modifyChar).toBeInTheDocument();
+      await userEvent.click(modifyChar);
+      expect(useReducer(reducer, mockInitialState)[1]).toHaveBeenCalled();
+
+      const addChar = screen.getByText('Add');
+      expect(addChar).toBeInTheDocument();
+      await userEvent.click(addChar);
       expect(useReducer(reducer, mockInitialState)[1]).toHaveBeenCalled();
     });
   });

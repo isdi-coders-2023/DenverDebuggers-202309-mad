@@ -1,0 +1,76 @@
+{
+  "privateCharacters": [
+    {
+      "id": "63ec18975d30fabfe450286a",
+      "_id": "63ec18975d30fabfe450286a",
+      "Nombre": "Lisa Simpson",
+      "Historia": "Lisa Marie Simpson (nacida el 9 de mayo ) es una carismática niña de 8 años que supera el nivel de rendimiento estándar de los niños de su edad. No para sorpresa de todos, ella también es el centro moral de su familia. En su educación, Lisa carece de la participación de los padres de Homer y Marge, lo que la lleva a pasatiempos como tocar el saxofón y la guitarra, montar y cuidar caballos, e interés en estudios avanzados. En la escuela, la popularidad de Lisa se ve afectada por aquellos que la ven como una superdotada geek, lo que la deja con solo unos pocos amigos. Lisa Simpson es una niña inteligente, ingeniosa e independiente que se enfoca en sus metas y se esfuerza por alcanzar su potencial, y a los 8 años ya es miembro de MENSA con un coeficiente intelectual de 159.",
+      "Imagen": "https://static.simpsonswiki.com/images/thumb/e/ec/Lisa_Simpson.png/220px-Lisa_Simpson.png",
+      "Genero": "Femenino",
+      "Estado": "Vivo",
+      "Ocupacion": "Estudiante en la escuela primaria de Springfield, Agente CTU, Monitor de pasillo, Anteriormente: Niñera "
+    },
+    {
+      "id": "63e2b3b9e6c69920933ff306",
+      "_id": "63e2b3b9e6c69920933ff306",
+      "Nombre": "Homero Simpson",
+      "Historia": "Homer Jay Simpson , anteriormente conocido como Max Power , es el padre de la familia Simpson. Tiene sobrepeso, es perezoso e ignorante, pero también es muy devoto de su esposa e hijos. Trabaja como inspector de seguridad de bajo nivel en la planta de energía nuclear de Springfield",
+      "Imagen": "https://static.simpsonswiki.com/images/b/bd/Homer_Simpson.png",
+      "Genero": "Masculino",
+      "Estado": "Vivo",
+      "Ocupacion": "Inspector de Seguridad Nuclear Ex Supervisor Técnico",
+      "updatedAt": "2023-03-10T17:16:34.755Z"
+    },
+    {
+      "id": "63e2beaee6c69920933ff310",
+      "_id": "51a08fd8-ae47-4884-8010-50866027db3e",
+      "Nombre": "asd",
+      "Historia": "asd",
+      "Imagen": "asd",
+      "Genero": "Masculino",
+      "Estado": "Vivo",
+      "Ocupacion": "asd"
+    },
+    {
+      "id": "63e2c200e6c69920933ff31b",
+      "_id": "63e2c200e6c69920933ff31b",
+      "Nombre": "Abraham Simpson",
+      "Historia": "Abraham Abe Jay Simpson, generalmente conocido como el abuelo Simpson o simplemente el abuelo , es el patriarca de la familia Simpson, el padre de Homer Simpson , Herbert Powell y Abbey y el abuelo de Bart , Lisa y Maggie . simpson _ Abe es un veterano de la Segunda Guerra Mundial enviado más tarde al Castillo de Retiro de Springfield por Homer. Es conocido por sus historias largas, incoherentes y, a menudo, inexactas y por su incompetencia general.",
+      "Imagen": "https://static.simpsonswiki.com/images/thumb/a/a9/Abraham_Simpson.png/250px-Abraham_Simpson.png",
+      "Genero": "Masculino",
+      "Estado": "Vivo",
+      "Ocupacion": "Miembro veterano de la Segunda Guerra Mundial",
+      "updatedAt": "2023-03-10T03:47:47.809Z"
+    },
+    {
+      "id": "e98e0900-2e22-4623-b0ad-d8a985284b6b",
+      "_id": "e98e0900-2e22-4623-b0ad-d8a985284b6b",
+      "Nombre": "asdasd",
+      "Historia": "asdasd",
+      "Imagen": "asdasd",
+      "Genero": "Masculino",
+      "Estado": "Vivo",
+      "Ocupacion": "asd"
+    },
+    {
+      "id": "4ee85838-f435-456e-afee-9441e0c7697f",
+      "_id": "4ee85838-f435-456e-afee-9441e0c7697f",
+      "Nombre": "asdasd",
+      "Historia": "asdas",
+      "Imagen": "ads",
+      "Genero": "Masculino",
+      "Estado": "Vivo",
+      "Ocupacion": "ads"
+    },
+    {
+      "id": "7802ca28-bdf0-4a3f-b599-25558206aa0c",
+      "_id": "7802ca28-bdf0-4a3f-b599-25558206aa0c",
+      "Nombre": "luis",
+      "Historia": "asd",
+      "Imagen": "asd",
+      "Genero": "Masculino",
+      "Estado": "Vivo",
+      "Ocupacion": "asdssad"
+    }
+  ]
+}

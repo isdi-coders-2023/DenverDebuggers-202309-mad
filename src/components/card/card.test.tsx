@@ -1,14 +1,15 @@
 import { screen, render } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { Card } from './card';
-import { Character } from '../../models/character';
 import { BrowserRouter } from 'react-router-dom';
+import { Character } from '../../models/character';
 
 describe('Given Footer component', () => {
   describe('When we instantiate', () => {
+    const character = { Nombre: 'Bart', Imagen: '' };
     render(
       <BrowserRouter>
-        <Card character={{ Nombre: 'Bart', Imagen: '' } as Character}></Card>
+        <Card character={character as Character} favorite={true}></Card>
       </BrowserRouter>
     );
 
