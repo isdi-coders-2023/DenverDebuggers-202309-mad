@@ -1,10 +1,10 @@
 import { render, screen } from '@testing-library/react';
 import { AppContext, ContextStructure } from '../../context/app.context';
-import { Details } from './details.favorite';
 import '@testing-library/jest-dom';
 import { Character } from '../../models/character';
 import { State } from '../../reducer/actions';
 import { BrowserRouter } from 'react-router-dom';
+import { DetailsFavorite } from './details.favorite';
 const mockContext: ContextStructure = {
   state: {
     characters: [{ Nombre: 'Bart' }],
@@ -34,7 +34,7 @@ describe('Given List component', () => {
       render(
         <BrowserRouter>
           <AppContext.Provider value={mockContext}>
-            <Details></Details>
+            <DetailsFavorite></DetailsFavorite>
           </AppContext.Provider>
         </BrowserRouter>
       );
@@ -49,7 +49,7 @@ describe('Given List component', () => {
       render(
         <BrowserRouter>
           <AppContext.Provider value={mockContext2}>
-            <Details></Details>
+            <DetailsFavorite></DetailsFavorite>
           </AppContext.Provider>
         </BrowserRouter>
       );
