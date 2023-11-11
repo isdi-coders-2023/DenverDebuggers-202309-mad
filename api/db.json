@@ -61,6 +61,16 @@
       "Genero": "Masculino",
       "Estado": "Vivo",
       "Ocupacion": "ads"
+    },
+    {
+      "id": "7802ca28-bdf0-4a3f-b599-25558206aa0c",
+      "_id": "7802ca28-bdf0-4a3f-b599-25558206aa0c",
+      "Nombre": "luis",
+      "Historia": "asd",
+      "Imagen": "asd",
+      "Genero": "Masculino",
+      "Estado": "Vivo",
+      "Ocupacion": "asdssad"
     }
   ]
 }

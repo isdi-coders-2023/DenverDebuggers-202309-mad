@@ -41,75 +41,60 @@ export function FormCreate() {
 
   return (
     <form className="character-form" onSubmit={handleSubmit}>
-      <section className="Character Data">
-        <div className="form-control">
-          <label htmlFor="character-name">Nombre</label>
-          <input
-            type="text"
-            name="characterName"
-            id="character-name"
-            placeholder="Nombre del personaje"
-            required
-          />
-        </div>
-        <div className="form-control">
-          <label htmlFor="character-history">Historia</label>
-          <input
-            type="text"
-            name="characterHistory"
-            id="character-history"
-            placeholder="Historia del personaje"
-            required
-          />
-        </div>
+      <label htmlFor="character-name">Nombre</label>
+      <input
+        type="text"
+        name="characterName"
+        id="character-name"
+        placeholder="Nombre del personaje"
+        required
+      />
+      <label htmlFor="character-history">Historia</label>
+      <input
+        type="text"
+        name="characterHistory"
+        id="character-history"
+        placeholder="Historia del personaje"
+        required
+      />
+      <label htmlFor="character-image">Imagen</label>
+      <input
+        type="text"
+        name="characterImage"
+        id="character-image"
+        placeholder="Url de la imagen"
+        required
+      />
+      <label htmlFor="character-gender">Género</label>
+      <select name="characterGender" id="alive-character">
+        Status
+        <option value="default" disabled>
+          Selecciona el género del personaje
+        </option>
+        <option value="Masculino">Masculino</option>
+        <option value="Femenino">Femenino</option>
+        <option value="Desconocido">Desconocido</option>
+      </select>
+      <label htmlFor="character-state">Estado</label>
+      <select name="characterState" id="alive-character">
+        Status
+        <option value="default" disabled>
+          Selecciona el Estado del personaje
+        </option>
+        <option value="Vivo">Vivo</option>
+        <option value="Fallecido">Fallecido</option>
+        <option value="Ficticio">Ficticio</option>
+      </select>
 
-        <div className="form-control">
-          <label htmlFor="character-image">Imagen</label>
-          <input
-            type="text"
-            name="characterImage"
-            id="character-image"
-            placeholder="Url de la imagen"
-            required
-          />
-        </div>
-        <div className="form-control">
-          <label htmlFor="character-gender">Género</label>
-          <select name="characterGender" id="alive-character">
-            Status
-            <option value="default" disabled>
-              Selecciona el género del personaje
-            </option>
-            <option value="Masculino">Masculino</option>
-            <option value="Femenino">Femenino</option>
-            <option value="Desconocido">Desconocido</option>
-          </select>
-        </div>
-        <div className="form-control">
-          <label htmlFor="character-state">Estado</label>
-          <select name="characterState" id="alive-character">
-            Status
-            <option value="default" disabled>
-              Selecciona el Estado del personaje
-            </option>
-            <option value="Vivo">Vivo</option>
-            <option value="Fallecido">Fallecido</option>
-            <option value="Ficticio">Ficticio</option>
-          </select>
-        </div>
-
-        <div className="form-control">
-          <label htmlFor="character-ocupation">Ocupación</label>
-          <input
-            type="text"
-            name="characterOcupation"
-            id="character-ocupation"
-            placeholder="Ocupación del personaje"
-            required
-          />
-        </div>
-        <input type="submit" onSubmit={handleSubmit} value={'Enviar'} />
-      </section>
+      <label htmlFor="character-ocupation">Ocupación</label>
+      <input
+        type="text"
+        name="characterOcupation"
+        id="character-ocupation"
+        placeholder="Ocupación del personaje"
+        required
+      />
+      <input type="submit" value={'Enviar'} />
     </form>
   );
 }
