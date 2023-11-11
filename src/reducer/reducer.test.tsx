@@ -15,8 +15,6 @@ describe('Auth Reducer', () => {
     selectedValue: '',
   };
   test('should return load correclty ', () => {
-    mockPayload;
-
     const newState = characterReducer(mockPayload, {
       type: 'load',
       payload: [],
@@ -25,8 +23,6 @@ describe('Auth Reducer', () => {
   });
 
   test('should return load correclty ', () => {
-    mockPayload;
-
     const newState = characterReducer(mockPayload, {
       type: 'filter',
       payload: [],
@@ -35,8 +31,6 @@ describe('Auth Reducer', () => {
   });
 
   test('should return page correclty ', () => {
-    mockPayload;
-
     const newState = characterReducer(mockPayload, {
       type: 'page',
       payload: 1,
@@ -45,8 +39,6 @@ describe('Auth Reducer', () => {
   });
 
   test('should return Add correclty ', () => {
-    mockPayload2;
-
     const newState = characterReducer(mockPayload, {
       type: 'create',
       payload: {} as Character,
@@ -55,8 +47,6 @@ describe('Auth Reducer', () => {
   });
 
   test('should return update correclty ', () => {
-    mockPayload2;
-
     const newState = characterReducer(mockPayload2, {
       type: 'update',
       payload: {} as Character,
@@ -65,8 +55,6 @@ describe('Auth Reducer', () => {
   });
 
   test('should return delete correclty ', () => {
-    mockPayload;
-
     const newState = characterReducer(mockPayload, {
       type: 'delete',
       payload: 'string',
@@ -75,8 +63,6 @@ describe('Auth Reducer', () => {
   });
 
   test('should return selectValue correclty ', () => {
-    mockPayload;
-
     const newState = characterReducer(mockPayload, {
       type: 'select',
       payload: '',
@@ -85,8 +71,6 @@ describe('Auth Reducer', () => {
   });
 
   test('should return default correclty ', () => {
-    mockPayload;
-
     const newState = characterReducer(mockPayload, {
       type: '',
       payload: null,
