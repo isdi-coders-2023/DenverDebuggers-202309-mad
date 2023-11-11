@@ -62,15 +62,12 @@ export function useCharacters() {
     } catch (error) {
       console.log((error as Error).message);
     }
-    console.log(character);
-    console.log(state.characters);
   };
 
   const modifyCharacter = async (
     id: Character['_id'],
     character: Partial<Character>
   ) => {
-    console.log(id);
     try {
       const modifiedCharacter = await repoFav.modifyCharacter(id, character);
       dispatch(updateActionCreator(modifiedCharacter));
@@ -81,10 +78,7 @@ export function useCharacters() {
 
   const deleteCharacter = async (id: Character['id']) => {
     try {
-      // Asíncrona -> API
       await repoFav.deleteCharacter(id);
-      // Síncrono -> Vista
-      // setNotes(notes.filter((item) => item.id !== id));
       dispatch(deleteActionCreator(id));
     } catch (error) {
       console.log((error as Error).message);

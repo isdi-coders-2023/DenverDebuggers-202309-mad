@@ -30,6 +30,9 @@ describe('Given the useTask hook', () => {
           handleHome,
           handleFilter,
           loadCharactersFav,
+          deleteCharacter,
+          modifyCharacter,
+          addCharacter,
         } = useCharacters();
 
         useEffect(() => {
@@ -48,6 +51,13 @@ describe('Given the useTask hook', () => {
             <button onClick={handleNext}>Next</button>
             <button onClick={handleFilter}>Filter</button>
             <button onClick={handleHome}>Home</button>
+            <button onClick={() => addCharacter({ Nombre: 'Bart' })}>
+              Add
+            </button>
+            <button onClick={() => deleteCharacter('1234')}>Delete</button>
+            <button onClick={() => modifyCharacter('1234', { Nombre: 'Bart' })}>
+              Modify
+            </button>
           </>
         );
       };
@@ -99,9 +109,25 @@ describe('Given the useTask hook', () => {
       expect(home).toBeInTheDocument();
       await userEvent.click(home);
       expect(useReducer(reducer, mockInitialState)[1]).toHaveBeenCalled();
+
       const load = screen.getByText('Load');
       expect(load).toBeInTheDocument();
       await userEvent.click(load);
+      expect(useReducer(reducer, mockInitialState)[1]).toHaveBeenCalled();
+
+      const deleteChar = screen.getByText('Delete');
+      expect(deleteChar).toBeInTheDocument();
+      await userEvent.click(deleteChar);
+      expect(useReducer(reducer, mockInitialState)[1]).toHaveBeenCalled();
+
+      const modifyChar = screen.getByText('Modify');
+      expect(modifyChar).toBeInTheDocument();
+      await userEvent.click(modifyChar);
+      expect(useReducer(reducer, mockInitialState)[1]).toHaveBeenCalled();
+
+      const addChar = screen.getByText('Add');
+      expect(addChar).toBeInTheDocument();
+      await userEvent.click(addChar);
       expect(useReducer(reducer, mockInitialState)[1]).toHaveBeenCalled();
     });
   });
