@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { FormCreate } from './create.form';
 import { BrowserRouter } from 'react-router-dom';
@@ -27,7 +27,6 @@ describe('Given CharacterForm Component', () => {
       await userEvent.type(nameInput, 'Bart');
       expect(nameInput).toHaveValue('Bart');
       expect(submitButton).toBeInTheDocument;
-      fireEvent.submit;
       await userEvent.click(submitButton);
       expect(handleSubmit).toHaveBeenCalled;
     });
