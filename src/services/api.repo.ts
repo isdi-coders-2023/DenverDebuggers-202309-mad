@@ -51,8 +51,6 @@ export class ApiSimpsonsPrivate {
         'Content-Type': 'application/json',
       },
     });
-    if (!response.ok)
-      throw new Error(response.status + ' ' + response.statusText);
     return response.json();
   }
 
@@ -61,8 +59,6 @@ export class ApiSimpsonsPrivate {
     const response = await fetch(finalUrl, {
       method: 'DELETE',
     });
-    if (!response.ok)
-      throw new Error(response.status + ' ' + response.statusText);
     return response.json();
   }
 }

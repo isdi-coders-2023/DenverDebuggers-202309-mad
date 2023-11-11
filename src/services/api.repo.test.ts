@@ -57,6 +57,7 @@ describe('Given ApiSimpsonPrivate class', () => {
       expect(createdCharacter).toBeDefined();
     });
   });
+
   describe('When calling the create method', () => {
     test('Then it should fetch data from the Api and return the response', async () => {
       const privateData = {} as unknown as Partial<Character>;
@@ -78,15 +79,60 @@ describe('Given ApiSimpsonPrivate class', () => {
       expect(response).toEqual(privateData);
     });
   });
-  describe('When we instantiate it and response is bad', () => {
-    beforeEach(() => {
-      global.fetch = jest.fn().mockResolvedValueOnce({
-        ok: false,
-      });
-    });
-    test('Then method getPrivateCharacters should not be used', async () => {
+
+  describe('When calling the delete method', () => {
+    test('Then it should fecth data from the API and return the response', async () => {
+      const mockId = '1';
+      const expectedUrl = `http://localhost:3000/privateCharacters/${mockId}`;
       const repo = new ApiSimpsonsPrivate();
-      expect(repo.getPrivateCharacters()).rejects.toThrow();
+
+      global.fetch = jest.fn().mockResolvedValue({
+        ok: true,
+        json: jest.fn().mockResolvedValue({}),
+      });
+      const response = await repo.deleteCharacter(mockId);
+      expect(global.fetch).toHaveBeenCalledWith(expectedUrl, {
+        method: 'DELETE',
+      });
+      expect(response).toEqual({});
+    });
+  });
+
+  describe('When calling the modify method', () => {
+    test('Then it should fecth data from the API and return the response', async () => {
+      const mockId = '1';
+      const privateData = { id: 1 } as unknown as Partial<Character>;
+      const expectedUrl = 'http://localhost:3000/privateCharacters/1';
+      const repo = new ApiSimpsonsPrivate();
+
+      global.fetch = jest.fn().mockResolvedValue({
+        ok: true,
+        json: jest.fn().mockResolvedValue(privateData),
+      });
+
+      const response = await repo.modifyCharacter(mockId, privateData);
+
+      expect(global.fetch).toHaveBeenCalledWith(expectedUrl, {
+        method: 'PATCH',
+        body: JSON.stringify(privateData),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      expect(response).toEqual(privateData);
+    });
+
+    describe('When we instantiate it and response is bad', () => {
+      beforeEach(() => {
+        global.fetch = jest.fn().mockResolvedValueOnce({
+          ok: false,
+        });
+      });
+
+      test('Then method getPrivateCharacters should not be used', async () => {
+        const repo = new ApiSimpsonsPrivate();
+        expect(repo.getPrivateCharacters()).rejects.toThrow();
+      });
     });
   });
 });
