@@ -12,7 +12,7 @@ export function ListFavorite() {
 
   return (
     <div className="list-container">
-      <Link to={'/createForm'}>
+      <Link to={'/create.form/' + 'new'}>
         <img src="add.png" alt="Agregar un Personaje" />
       </Link>
       <ul className="character-list">

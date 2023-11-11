@@ -9,7 +9,6 @@ const FavoriteDetails = lazy(
 const ErrorPage = lazy(() => import('../../pages/error/error'));
 const Favorites = lazy(() => import('../../pages/favorites/favorites'));
 const FormCreate = lazy(() => import('../../pages/create.form/create.form'));
-const FormModify = lazy(() => import('../../pages/modify.form/modify.form'));
 export function AppRoutes() {
   return (
     <main>
@@ -19,12 +18,8 @@ export function AppRoutes() {
           <Route path="/home" element={<Home></Home>}></Route>
           <Route path="/favorites" element={<Favorites></Favorites>}></Route>
           <Route
-            path="/create.form"
+            path="/create.form/:id"
             element={<FormCreate></FormCreate>}
-          ></Route>
-          <Route
-            path="/modify.form/:id"
-            element={<FormModify></FormModify>}
           ></Route>
           <Route path="/details/:id" element={<Details></Details>}></Route>
           <Route

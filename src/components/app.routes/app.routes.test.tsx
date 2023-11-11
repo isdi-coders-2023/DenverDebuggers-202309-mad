@@ -57,7 +57,7 @@ describe('Given AppRoutes component', () => {
     beforeEach(async () => {
       await act(async () => {
         render(
-          <MemoryRouter initialEntries={['/create.form']} initialIndex={0}>
+          <MemoryRouter initialEntries={['/create.form/id']} initialIndex={0}>
             <AppRoutes></AppRoutes>
           </MemoryRouter>
         );
@@ -69,28 +69,7 @@ describe('Given AppRoutes component', () => {
       expect(element).toBeInTheDocument();
     });
   });
-  describe('When we navigate to modify form page', () => {
-    const MockedModifyComponent = jest.fn().mockReturnValue(<p>Modify</p>);
-    jest.mock(
-      '../../pages/modify.form/modify.form',
-      () => MockedModifyComponent
-    );
-    let element: HTMLElement;
-    beforeEach(async () => {
-      await act(async () => {
-        render(
-          <MemoryRouter initialEntries={['/modify.form/:id']} initialIndex={0}>
-            <AppRoutes></AppRoutes>
-          </MemoryRouter>
-        );
-      });
-      element = screen.getByText('Modify');
-    });
-    test('Then the component should been called', () => {
-      expect(MockedModifyComponent).toHaveBeenCalled();
-      expect(element).toBeInTheDocument();
-    });
-  });
+
   describe('When we navigate to Details page ', () => {
     const MockedDetailsComponent = jest.fn().mockReturnValue(<p>Homer</p>);
     jest.mock('../../pages/details/details', () => MockedDetailsComponent);

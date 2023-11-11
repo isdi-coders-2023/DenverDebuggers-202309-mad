@@ -1,12 +1,12 @@
 import { SyntheticEvent, useContext } from 'react';
 import { Character, Status } from '../../models/character';
 import { AppContext } from '../../context/app.context';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 export function FormCreate() {
-  const { addCharacter } = useContext(AppContext);
+  const { addCharacter, modifyCharacter } = useContext(AppContext);
   const navigate = useNavigate();
-
+  const { id } = useParams();
   const handleSubmit = (event: SyntheticEvent) => {
     const form = event.target as HTMLFormElement;
     event.preventDefault();
@@ -29,7 +29,11 @@ export function FormCreate() {
         form.elements.namedItem('characterOcupation') as HTMLInputElement
       ).value,
     };
-    addCharacter(newCharacter);
+    if (id === 'new') {
+      addCharacter(newCharacter);
+    } else {
+      modifyCharacter(id as string, newCharacter);
+    }
     form.reset();
 
     navigate('/favorites');

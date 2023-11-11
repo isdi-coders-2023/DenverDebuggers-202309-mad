@@ -23,13 +23,13 @@
     },
     {
       "id": "63e2beaee6c69920933ff310",
-      "_id": "63e2beaee6c69920933ff310",
-      "Nombre": "El barto",
-      "Historia": "ad",
-      "Imagen": "ad",
+      "_id": "51a08fd8-ae47-4884-8010-50866027db3e",
+      "Nombre": "asd",
+      "Historia": "asd",
+      "Imagen": "asd",
       "Genero": "Masculino",
       "Estado": "Vivo",
-      "Ocupacion": "adada"
+      "Ocupacion": "asd"
     },
     {
       "id": "63e2c200e6c69920933ff31b",
@@ -51,6 +51,16 @@
       "Genero": "Masculino",
       "Estado": "Vivo",
       "Ocupacion": "asd"
+    },
+    {
+      "id": "4ee85838-f435-456e-afee-9441e0c7697f",
+      "_id": "4ee85838-f435-456e-afee-9441e0c7697f",
+      "Nombre": "asdasd",
+      "Historia": "asdas",
+      "Imagen": "ads",
+      "Genero": "Masculino",
+      "Estado": "Vivo",
+      "Ocupacion": "ads"
     }
   ]
 }

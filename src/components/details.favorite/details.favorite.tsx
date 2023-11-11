@@ -31,7 +31,7 @@ export function DetailsFavorite() {
         <Link to={'/favorites'}>
           <img src="/arrow.png" alt="Boton para ir para atras" width={23} />
         </Link>
-        <Link to={'/modify.form/' + character?.id}>
+        <Link to={'/create.form/' + character?.id}>
           <img src="/modify.png" alt="Boton para modificar" width={23} />
         </Link>
         <Link
