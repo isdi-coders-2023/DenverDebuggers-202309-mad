@@ -8,10 +8,6 @@ export function DetailsFavorite() {
 
   const character = state.characters.find((element) => element._id === id);
 
-  function handleDelete() {
-    deleteCharacter(character?._id as string);
-  }
-
   return (
     <div className="details-container">
       <div className="image-container">
@@ -38,8 +34,11 @@ export function DetailsFavorite() {
         <Link to={'/modify.form/' + character?.id}>
           <img src="/modify.png" alt="Boton para modificar" width={23} />
         </Link>
-        <Link to={'/favorites'} onClick={handleDelete}>
-          <img src="/delete.png" alt="Boton para modificar" width={23} />
+        <Link
+          to={'/favorites'}
+          onClick={() => deleteCharacter(character?._id as string)}
+        >
+          <img src="/delete.png" alt="Boton para eliminar" width={23} />
         </Link>
       </div>
     </div>

@@ -6,10 +6,6 @@ import { useNavigate } from 'react-router-dom';
 export function FormCreate() {
   const { addCharacter } = useContext(AppContext);
   const navigate = useNavigate();
-  const handleChange = (ev: SyntheticEvent) => {
-    ev.preventDefault();
-    console.log('cambia');
-  };
 
   const handleSubmit = (event: SyntheticEvent) => {
     const form = event.target as HTMLFormElement;
@@ -48,7 +44,6 @@ export function FormCreate() {
             type="text"
             name="characterName"
             id="character-name"
-            onChange={handleChange}
             placeholder="Nombre del personaje"
             required
           />
@@ -59,7 +54,6 @@ export function FormCreate() {
             type="text"
             name="characterHistory"
             id="character-history"
-            onChange={handleChange}
             placeholder="Historia del personaje"
             required
           />
@@ -71,18 +65,13 @@ export function FormCreate() {
             type="text"
             name="characterImage"
             id="character-image"
-            onChange={handleChange}
             placeholder="Url de la imagen"
             required
           />
         </div>
         <div className="form-control">
           <label htmlFor="character-gender">Género</label>
-          <select
-            name="characterGender"
-            id="alive-character"
-            onChange={handleChange}
-          >
+          <select name="characterGender" id="alive-character">
             Status
             <option value="default" disabled>
               Selecciona el género del personaje
@@ -94,11 +83,7 @@ export function FormCreate() {
         </div>
         <div className="form-control">
           <label htmlFor="character-state">Estado</label>
-          <select
-            name="characterState"
-            id="alive-character"
-            onChange={handleChange}
-          >
+          <select name="characterState" id="alive-character">
             Status
             <option value="default" disabled>
               Selecciona el Estado del personaje
@@ -115,12 +100,11 @@ export function FormCreate() {
             type="text"
             name="characterOcupation"
             id="character-ocupation"
-            onChange={handleChange}
             placeholder="Ocupación del personaje"
             required
           />
         </div>
-        <input type="submit" onSubmit={handleSubmit} />
+        <input type="submit" onSubmit={handleSubmit} value={'Enviar'} />
       </section>
     </form>
   );

@@ -23,11 +23,10 @@ const mockContext2: ContextStructure = {
     filteredCharacters: [{}],
     selectedValue: 'Vivo',
   } as State,
-  loadCharacters: jest
+  deleteCharacter: jest
     .fn()
     .mockResolvedValue([{ Nombre: 'Bart' } as Character]),
 } as unknown as ContextStructure;
-
 describe('Given List component', () => {
   describe('When we instantiate', () => {
     beforeEach(() => {
