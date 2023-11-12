@@ -1,0 +1,15 @@
+@import '../../vars.scss';
+
+.list-container {
+  .create-container {
+    display: flex;
+    padding-inline-start: 1rem;
+    padding-block-start: 1rem;
+    font-family: $kelly-slab-font;
+    gap: 0.5rem;
+    align-items: center;
+    p {
+      color: black;
+    }
+  }
+}

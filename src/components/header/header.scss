@@ -14,9 +14,12 @@ header {
   }
   .header-buttons-container {
     display: none;
+    button {
+      font-family: $kelly-slab-font;
+    }
   }
 }
-@media (width > 380px) {
+@media (min-width: 380px) {
   header {
     .header-container {
       justify-content: space-between;

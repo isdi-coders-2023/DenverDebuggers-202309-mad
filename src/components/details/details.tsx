@@ -21,20 +21,28 @@ export function Details() {
         <img src={character?.Imagen} alt={character?.Nombre} />
       </div>
       <div className="info-container">
-        <h2>{character?.Nombre}</h2>
-        <p>{character?.Historia}</p>
-        <p>
-          <span>Estado: </span>
-          {character?.Estado}
-        </p>
-        <p>
-          <span>Género: </span>
-          {character?.Genero}
-        </p>
-        <p>
-          <span>Ocupación: </span>
-          {character?.Ocupacion}
-        </p>
+        <div className="h2-container">
+          <h2>{character?.Nombre}</h2>
+        </div>
+        <div className="p-container">
+          <p>{character?.Historia}</p>
+          <p>
+            <span>Estado: </span>
+            {character?.Estado}
+          </p>
+        </div>
+        <div className="p-container">
+          <p>
+            <span>Género: </span>
+            {character?.Genero}
+          </p>
+        </div>
+        <div className="p-container">
+          <p>
+            <span>Ocupación: </span>
+            {character?.Ocupacion}
+          </p>
+        </div>
         <Link to={'/'}>
           <img src="/arrow.png" alt="Boton para ir para atras" width={23} />
         </Link>

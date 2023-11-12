@@ -9,10 +9,10 @@ export function Pagination() {
   return (
     <div className="button-container">
       <button onClick={handlePrevious} disabled={state.page === 1}>
-        Previous
+        Anterior
       </button>
       <button onClick={handleNext} disabled={state.page === 109}>
-        Next
+        Siguiente
       </button>
     </div>
   );

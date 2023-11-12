@@ -1,0 +1,15 @@
+@import '../../vars.scss';
+
+.error-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-block: 2rem;
+  font-family: $kelly-slab-font;
+  font-size: large;
+  .error-text-container {
+    p {
+      text-align: center;
+    }
+  }
+}
