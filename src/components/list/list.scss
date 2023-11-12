@@ -15,7 +15,7 @@ ul {
   }
 }
 
-@media (width > 380px) {
+@media (min-width: 380px) {
   ul {
     display: flex;
     justify-content: space-around;

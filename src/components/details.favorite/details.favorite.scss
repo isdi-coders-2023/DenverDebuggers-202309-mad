@@ -39,7 +39,7 @@
   }
 }
 
-@media (width > 380px) {
+@media (min-width: 380px) {
   .details-container {
     flex-direction: row;
     justify-content: center;
