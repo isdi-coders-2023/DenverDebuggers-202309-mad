@@ -11,24 +11,49 @@ header {
     align-items: center;
     padding-inline: 2rem;
     padding-block: 1rem;
+    gap: 2rem;
   }
-  .header-buttons-container {
+  .header-buttons-mobile-container {
+    display: flex;
+    gap: 1rem;
+    .all-chars-button-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 45px;
+      height: 45px;
+      background-color: $button-color;
+      border-radius: 15px;
+    }
+    .favorites-button-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 45px;
+      height: 45px;
+      background-color: $button-color;
+      border-radius: 15px;
+    }
+  }
+  .header-buttons-desktop-container {
     display: none;
     button {
       font-family: $kelly-slab-font;
     }
   }
 }
-@media (min-width: 380px) {
+@media (min-width: 400px) {
   header {
     .header-container {
       justify-content: space-between;
       gap: 4rem;
     }
-    .hamburguer-logo {
+    .header-buttons-mobile-container {
       display: none;
     }
-    .header-buttons-container {
+    .header-buttons-desktop-container {
       display: flex;
       gap: 2rem;
       button {
