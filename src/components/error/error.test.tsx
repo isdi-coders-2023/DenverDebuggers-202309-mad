@@ -10,7 +10,7 @@ describe('Given Error Page component', () => {
     });
 
     test('It should be in the document', () => {
-      const element = screen.getByText(/./);
+      const element = screen.getByText(/DO-OH/i);
       expect(element).toBeInTheDocument();
     });
   });
