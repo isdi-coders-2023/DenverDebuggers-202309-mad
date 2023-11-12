@@ -1,0 +1,79 @@
+@import '../../vars.scss';
+.character-form {
+  max-width: 420px;
+  margin: 20px auto;
+  box-shadow: $footer-button-color;
+
+  .form-container {
+    label {
+      display: block;
+      margin-bottom: 7px;
+      font-family: $kavoon-font;
+      color: grey;
+    }
+    .name-input {
+      input {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        box-sizing: border-box;
+        font-family: $kelly-slab-font;
+        color: grey;
+      }
+    }
+  }
+
+  .character-container,
+  .image-container,
+  .gender-container,
+  .state-container,
+  .ocupation-container {
+    margin-bottom: 16px;
+    font-family: $kavoon-font;
+    color: grey;
+    .button-submit {
+      display: flex;
+      justify-content: center;
+      text-align: center;
+    }
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-family: $kavoon-font;
+      color: grey;
+    }
+
+    input,
+    select {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      box-sizing: border-box;
+      font-family: $kelly-slab-font;
+      color: grey;
+    }
+
+    select {
+      cursor: pointer;
+    }
+  }
+
+  input[type='submit'] {
+    background-color: $button-color;
+    color: $header-background-color;
+    cursor: pointer;
+    padding: 10px;
+    border: none;
+    border-radius: 3px;
+    font-family: $kavoon-font;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    &:hover {
+      background-color: darken($footer-background-color, 2%);
+      font-family: $kavoon-font;
+    }
+  }
+}
