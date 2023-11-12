@@ -1,0 +1,44 @@
+@import '../../vars.scss';
+
+.filter-container {
+  font-family: $kelly-slab-font;
+  margin-block-start: 1rem;
+  margin-inline-start: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  select {
+    /* Reset */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: 0;
+    outline: 0;
+    font: inherit;
+    /* Personalize */
+    width: 7rem;
+    height: 2rem;
+    padding: 0 1rem 0 1rem;
+    background: url(https://upload.wikimedia.org/wikipedia/commons/9/9d/Caret_down_font_awesome_whitevariation.svg)
+        no-repeat right 0.8em center/1.4em,
+      linear-gradient(
+        to left,
+        rgba(255, 255, 255, 0.3) 3rem,
+        rgba(255, 255, 255, 0.2) 3rem
+      );
+    color: black;
+    border-radius: 0.25rem;
+    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+  }
+  select option {
+    color: inherit;
+    background-color: $body-background-color;
+  }
+  select:focus {
+    outline: none;
+  }
+  select::-ms-expand {
+    display: none;
+  }
+}

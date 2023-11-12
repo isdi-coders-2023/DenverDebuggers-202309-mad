@@ -15,31 +15,43 @@ export function DetailsFavorite() {
       </div>
       <div className="info-container">
         <h2>{character?.Nombre}</h2>
-        <p>{character?.Historia}</p>
-        <p>
-          <span>Estado: </span>
-          {character?.Estado}
-        </p>
-        <p>
-          <span>Género: </span>
-          {character?.Genero}
-        </p>
-        <p>
-          <span>Ocupación: </span>
-          {character?.Ocupacion}
-        </p>
-        <Link to={'/favorites'}>
-          <img src="/arrow.png" alt="Boton para ir para atras" width={23} />
-        </Link>
-        <Link to={'/create.form/' + character?.id}>
-          <img src="/modify.png" alt="Boton para modificar" width={23} />
-        </Link>
-        <Link
-          to={'/favorites'}
-          onClick={() => deleteCharacter(character?._id as string)}
-        >
-          <img src="/delete.png" alt="Boton para eliminar" width={23} />
-        </Link>
+        <div className="p-container">
+          <p>{character?.Historia}</p>
+        </div>
+        <div className="p-container">
+          <p>
+            <span>Estado: </span>
+            {character?.Estado}
+          </p>
+        </div>
+        <div className="p-container">
+          <p>
+            <span>Género: </span>
+            {character?.Genero}
+          </p>
+        </div>
+        <div className="p-container">
+          <p>
+            <span>Ocupación: </span>
+            {character?.Ocupacion}
+          </p>
+        </div>
+        <div className="crud-container">
+          <Link to={'/favorites'}>
+            <img src="/arrow.png" alt="Boton para ir para atras" width={23} />
+          </Link>
+          <div className="ud-container">
+            <Link to={'/create.form/' + character?.id}>
+              <img src="/modify.png" alt="Boton para modificar" width={23} />
+            </Link>
+            <Link
+              to={'/favorites'}
+              onClick={() => deleteCharacter(character?._id as string)}
+            >
+              <img src="/delete.png" alt="Boton para eliminar" width={23} />
+            </Link>
+          </div>
+        </div>
       </div>
     </div>
   );
