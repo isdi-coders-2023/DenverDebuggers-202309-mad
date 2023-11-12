@@ -3,6 +3,7 @@ import '@testing-library/jest-dom';
 import { FormCreate } from './create.form';
 import { BrowserRouter } from 'react-router-dom';
 import userEvent from '@testing-library/user-event';
+import './create.form.scss';
 
 describe('Given CharacterForm Component', () => {
   describe('When we instatiate', () => {
