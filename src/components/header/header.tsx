@@ -17,14 +17,29 @@ export function Header() {
             height="80"
           />
         </Link>
-        <img
-          className="hamburguer-logo"
-          src="hamburguer-menu-logo.png"
-          alt="Hamburguer Menu Icon"
-          width="54"
-          height="63"
-        />
-        <div className="header-buttons-container">
+        <div className="header-buttons-mobile-container">
+          <div className="all-chars-button-container">
+            <Link to={'/home'}>
+              <img
+                src="./all-white.png"
+                alt="All characters Icon"
+                height="35"
+                width="35"
+              />
+            </Link>
+          </div>
+          <div className="favorites-button-container">
+            <Link to={'/favorites'}>
+              <img
+                src="./favourite-white.png"
+                alt="Favorite Icon"
+                height="35"
+                width="35"
+              />
+            </Link>
+          </div>
+        </div>
+        <div className="header-buttons-desktop-container">
           <div>
             <Link to={'/home'}>
               <button>Personajes</button>
